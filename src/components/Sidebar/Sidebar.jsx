@@ -2,6 +2,7 @@ import React from 'react'
 import { fetchUrl } from '../../library'
 import { urlCompanies } from '../../constants/constants'
 import { useState,useEffect } from 'react'
+import "./Sidebar.css"
 
 const Sidebar = () => {
   const [companies, setCompanies]=useState([])
@@ -9,7 +10,7 @@ const Sidebar = () => {
   useEffect(()=>{fetchUrl(urlCompanies,(res)=>{setCompanies(res)})})
 
   return (<>
-    <div><h2></h2>
+    <div className='sidebar'><h2>Sidebar</h2>
     <ul>
     {
       companies.map((el)=>{
