@@ -1,10 +1,11 @@
 import React from 'react'
+import "./Footer.css"
 
 const Footer = () => {
   return (
-    <div>
-      
-    </div>
+    <footer>
+      {"© Copyright Wednesday Works. Availability not guaranteed."}
+    </footer>
   )
 }
 
