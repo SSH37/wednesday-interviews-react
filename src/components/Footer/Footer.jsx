@@ -4,7 +4,7 @@ import "./Footer.css"
 const Footer = () => {
   return (
     <footer>
-      {"© Copyright Wednesday Works. Availability not guaranteed."}
+      {"© Copyright Wednesday Works 2024. Availability not guaranteed."}
     </footer>
   )
 }
