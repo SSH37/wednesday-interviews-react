@@ -3,11 +3,11 @@ footer {
   justify-content: center;
   align-items: center;
   min-height: 8vh;
-  width:100%;
-  background-color: teal;
+  width: 100%;
+  background-color: aliceblue;
 }
 
 .fixed {
-    position:fixed;
-    bottom:0;
+  position: fixed;
+  bottom: 0;
 }
