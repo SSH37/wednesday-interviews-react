@@ -5,6 +5,7 @@ import { urlCompanies } from '../../constants/constants'
 const Sidebar = () => {
   return (
     <div>Sidebar</div>
+    
   )
 }
 
