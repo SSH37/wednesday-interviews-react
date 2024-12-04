@@ -20,6 +20,7 @@ const HomePage = () => {
         <div id="candidatesList">
           {candidates.map((cardData) => {
             return <Card key={cardData.id} data={cardData} />;
+
           })}
         </div>
       </div>
