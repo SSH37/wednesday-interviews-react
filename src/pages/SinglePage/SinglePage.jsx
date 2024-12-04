@@ -48,24 +48,28 @@ const SinglePage = () => {
           </div>
         </div>
         <div id="candidateReportsList">
-          {reports.map((rep) => (
-            <div
-              key={rep.id}
-              className="reportSummary"
-              onClick={() => {
-                setReportModalData(rep);
-              }}
-            >
-              <div>
-                <h3>{rep.companyName}</h3>
+          {reports.map((rep) => {
+            const reportDate =  new Date(rep.interviewDate)
+            return (
+              <div
+                key={rep.id}
+                className="reportSummary"
+                onClick={() => {
+                  setReportModalData(rep);
+                }}
+              >
                 <div>
-                  <h3>{rep.phase}</h3>
-                  <h3>{rep.status}</h3>
+                  <h3>{rep.companyName}</h3>
+                  <h3>{`${reportDate.getUTCDay()}.${reportDate.getUTCMonth()}.${reportDate.getUTCFullYear()}`}</h3>
+                  <div>
+                    <h3>{rep.phase}</h3>
+                    <h3>{rep.status}</h3>
+                  </div>
                 </div>
+                <p>{`${rep.note.slice(0, 150)}...`}</p>
               </div>
-              <p>{`${rep.note.slice(0, 150)}...`}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       <Footer />
