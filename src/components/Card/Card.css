@@ -30,3 +30,19 @@
 .card > div {
     padding: 10px;
 }
+
+.cardEmailHidden {
+    display:none;
+}
+
+.cardEmailHovered {
+    position:absolute;
+    display: block;
+    border: 1px solid black;
+    top: 70px;
+    left: 0px;
+    padding: 0 2px;
+    z-index: 2;
+    background-color: white;
+    color : black
+}
