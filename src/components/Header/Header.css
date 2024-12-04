@@ -1,14 +1,10 @@
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
 .header {
     display: flex;
     justify-content: space-between;
-    min-height: 80px;
+    min-height: 130px;
     background-color: aliceblue;
+    padding: 10px;
+    box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
 .rightSide {

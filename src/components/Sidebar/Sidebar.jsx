@@ -7,14 +7,14 @@ import "./Sidebar.css"
 const Sidebar = () => {
   const [companies, setCompanies]=useState([])
 
-  useEffect(()=>{fetchUrl(urlCompanies,(res)=>{setCompanies(res)})})
+  useEffect(()=>{fetchUrl(urlCompanies,(res)=>{setCompanies(res)})},[])
 
   return (<>
     <div className='sidebar'><h2>Sidebar</h2>
     <ul>
     {
       companies.map((el)=>{
-        return <li>{el.name}</li>
+        return <li key={el.id}>{el.name}</li>
       })
     }
    

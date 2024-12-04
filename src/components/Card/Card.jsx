@@ -38,9 +38,9 @@ const Card = ({ data }) => {
             setEmailShow(false);
           }}
         >
-          {data.email.length > 20
+          {data.email.length > 15
             ? `${[
-                ...data.email.slice(0, 4),
+                ...data.email.slice(0, 3),
                 "...",
                 ...data.email.slice(data.email.indexOf("@")),
               ].join("")}`

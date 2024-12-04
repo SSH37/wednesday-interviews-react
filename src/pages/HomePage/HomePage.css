@@ -1,6 +1,6 @@
 #content {
   display: flex;
-  /* min-height: 84vh; */
+  min-height: calc(100vh - 210px);
   /* add image
     background: url(); */
 }
@@ -8,6 +8,8 @@
 #candidatesList {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   padding: 20px 5%;
+  width: 100%;
 }

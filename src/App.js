@@ -7,7 +7,7 @@ import WelcomePage from "./pages/WelcomePage/WelcomePage";
 function App() {
   return (
     <Routes>
-      <Route path="/welcome" element={<WelcomePage />} />
+      <Route path="/" element={<WelcomePage />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/candidate/:id" element={<SinglePage />} />
       <Route path="/*" element={<Navigate to={"/home"} />} />
