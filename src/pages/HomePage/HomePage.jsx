@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import Card from "../../components/Card/Card"
-import "./HomePage.css"
+import Card from "../../components/Card/Card";
+import { fetchUrl } from "../../library";
+import { urlCandidates } from "../../constants/constants";
+import "./HomePage.css";
 
 const HomePage = () => {
-  
-  //temp
-  let data = [1,2,3] 
+  const [candidates,setCandidates] = useState([]);
+
+  useEffect(()=>{fetchUrl(urlCandidates, (res)=>{setCandidates(res)})}, []);
+
   return (
     <>
       <Header />
       <div id="content">
-        <Sidebar/>
+        <Sidebar />
         <div id="candidatesList">
-          {data.map((cardData)=>{return <Card data={cardData}/>})}
+          {candidates.map((cardData) => {
+            return <Card key={cardData.id} data={cardData} />;
+          })}
         </div>
       </div>
       <Footer />
