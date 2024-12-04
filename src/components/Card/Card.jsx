@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 const Card = ({ data }) => {
   const [imageUrl, setImageUrl] = useState("");
   // const [imageUrl, setImageUrl] = useState(data.avatar);
-  //db gets 403 for avatar urls so fetch random picturess
+  //db gets 403 for avatar urls so fetch random pictures for now
   const nav = useNavigate();
   const [emailShow, setEmailShow] = useState(false);
 

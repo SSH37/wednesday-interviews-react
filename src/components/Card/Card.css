@@ -9,7 +9,6 @@
     background : linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
     color:white;
     word-wrap: break-word;
-    transition: transform 0.3s;
 }
 
 .card:hover {
@@ -17,6 +16,7 @@
     transform: scale(1.1,1.1);
     transform-origin: center;
     z-index: 1;
+    transition: transform 0.3s;
 }
 
 .card > img {

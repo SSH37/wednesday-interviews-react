@@ -8,9 +8,13 @@ import { urlCandidates } from "../../constants/constants";
 import "./HomePage.css";
 
 const HomePage = () => {
-  const [candidates,setCandidates] = useState([]);
+  const [candidates, setCandidates] = useState([]);
 
-  useEffect(()=>{fetchUrl(urlCandidates, (res)=>{setCandidates(res)})}, []);
+  useEffect(() => {
+    fetchUrl(urlCandidates, (res) => {
+      setCandidates(res);
+    });
+  }, []);
 
   return (
     <>
@@ -20,7 +24,6 @@ const HomePage = () => {
         <div id="candidatesList">
           {candidates.map((cardData) => {
             return <Card key={cardData.id} data={cardData} />;
-
           })}
         </div>
       </div>
