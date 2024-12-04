@@ -23,7 +23,7 @@ const Card = ({ data }) => {
         <p>
           {data.email.length > 15
             ? `${[
-                ...data.email.slice(0, 3),
+                ...data.email.slice(0, 4),
                 "...",
                 ...data.email.slice(data.email.indexOf("@")),
               ].join("")}`

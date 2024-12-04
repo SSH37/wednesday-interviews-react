@@ -5,16 +5,26 @@
     width: 30%;
     height: 300px;
     border: 3px solid black;
-    box-shadow: 2px 2px 3px 3px rgba(0,0,0,0.5);
+    box-shadow: 5px 5px 5px 3px rgba(0,0,0,0.5);
     background : linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
     color:white;
     word-wrap: break-word;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    border: aliceblue solid 3px;
+    transform: scale(1.1,1.1);
+    transform-origin: center;
+    z-index: 1;
 }
 
 .card > img {
-    width: 100%;
-    height: 60%;
-    padding: 10px;
+    border: aliceblue solid 3px;
+    border-radius: 50%;
+    width: calc(100% - 10px);
+    height: 65%;
+    margin: 5px;
 }
 
 .card > div {
