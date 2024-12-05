@@ -28,8 +28,8 @@ const SinglePage = () => {
     });
   }, []);
 
-  const getListBorderColor = () => {
-    if (reports.some((rep) => rep.status === "passed")) {
+  const getListBorderColor = (rep) => {
+    if (rep.status === "passed") {
       return "green";
     } else {
       return "red";
@@ -66,7 +66,7 @@ const SinglePage = () => {
                 onClick={() => {
                   setReportModalData(rep);
                 }}  
-                style={{ border: `3px solid ${getListBorderColor()}` }}
+                style={{ border: `3px solid ${getListBorderColor(rep)}` }}
               >
                 <div>
                   <h3>{rep.companyName}</h3>
