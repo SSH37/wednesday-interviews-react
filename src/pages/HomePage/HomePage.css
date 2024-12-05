@@ -1,15 +1,84 @@
 #content {
   display: flex;
-  min-height: calc(100vh - 210px);
+  min-height: calc(100vh - 13.125em);
   /* add image
     background: url(); */
+}
+
+#candidatesListParent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25em;
+  width: 100%;
+  padding: 1.25em 0;
+}
+
+.candidatesSubHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  height: 5em;
+  border-bottom: 3px solid black;
+}
+
+.candidatesSubHeader > p {
+  font-size: xx-large;
+  color: darkorchid;
+}
+
+.iconHP {
+  width: 1.875em;
+  height: 100%;
+  padding: 0.125em;
+}
+
+.searchBox {
+  position: relative;
+  display: flex;
+  width: 30%;
+  height: 2.5em;
+  border: 0.188em solid black;
+  border-radius: 1.875em;
+  overflow: hidden;
+}
+
+.searchBox:focus-within {
+  border: darkorchid solid 0.188em;
+}
+
+#search {
+  border: none;
+  border-radius: 1.875em;
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  caret-color: white;
+}
+
+#search:focus {
+  outline: none;
+}
+
+#searchLabel {
+  position: absolute;
+  top: 0.313em;
+  left: 1.875em;
+  font-size: 1rem;
+  user-select: none;
+}
+
+#search:focus ~ #searchLabel {
+  z-index: -1;
 }
 
 #candidatesList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  padding: 20px 5%;
+  gap: 1.25em;
+  padding: 0 5%;
   width: 100%;
 }

@@ -5,6 +5,7 @@
     width: 200px;
     height: 300px;
     border: 3px solid black;
+    border-radius: 25px;
     box-shadow: 5px 5px 5px 3px rgba(0,0,0,0.5);
     background : linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
     color:white;
