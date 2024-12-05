@@ -5,26 +5,59 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import Card from "../../components/Card/Card";
 import { fetchUrl } from "../../library";
 import { urlCandidates } from "../../constants/constants";
+import { FaSearch } from "react-icons/fa";
 import "./HomePage.css";
 
 const HomePage = () => {
   const [candidates, setCandidates] = useState([]);
+  const [filterParam, setFilterParam] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    fetchUrl(urlCandidates, (res) => {
+    const timeoutId = setTimeout(() => {
+      setFilterParam(inputValue);
+    }, 300);
+    return () => clearTimeout(timeoutId);
+  }, [inputValue, 300]);
+
+  // return <input type="text" value={inputValue} onChange={handleInputChange} />;
+
+  useEffect(() => {
+    fetchUrl(`${urlCandidates}${filterParam}`, (res) => {
       setCandidates(res);
     });
-  }, []);
+  }, [filterParam]);
 
   return (
     <>
       <Header />
       <div id="content">
         <Sidebar />
-        <div id="candidatesList">
-          {candidates.map((cardData) => {
-            return <Card key={cardData.id} data={cardData} />;
-          })}
+        <div id="candidatesListParent">
+          <div className="candidatesSubHeader">
+            <p>Candidates</p>
+            <div className="searchBox">
+              <FaSearch className="iconHP" />
+              <input
+                className=""
+                type="search"
+                name="search"
+                id="search"
+                placeholder=""
+                onInput={(e) => {
+                  setInputValue(`?name_like=${e.target.value}`);
+                }}
+              />
+              <label htmlFor="search" id="searchLabel">
+                Search candidates
+              </label>
+            </div>
+          </div>
+          <div id="candidatesList">
+            {candidates.map((cardData) => {
+              return <Card key={cardData.id} data={cardData} />;
+            })}
+          </div>
         </div>
       </div>
       <Footer />
