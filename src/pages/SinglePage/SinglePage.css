@@ -7,43 +7,80 @@
 }
 
 #candidateSummary {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   border-right: 3px solid purple;
   width: 300px;
   padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
-
+#candidateSummaryCard{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+  padding: 10px;
+}
+#candidateSummaryCard>img{
+  border-radius: 8px;
+}
 #candidateReportsList {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; 
   width: calc(100% - 300px);
+  padding: 20px; 
+  background-color: #f4f4f4; 
 }
 
 .reportSummary {
   display: flex;
   flex-direction: column;
-  border: 3px solid purple;
-  padding: 5px 10px;
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 12px; 
+  padding: 15px 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+  cursor: pointer;
+  background-color: #fff; 
+  transition: box-shadow 0.3s, transform 0.3s; 
+  overflow: hidden; 
+  width: 100%; 
+}
+
+.reportSummary:hover {
+  transform: translateY(-5px) scale(1.03); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 2;
 }
 
 .reportSummary > div {
   display: flex;
   justify-content: space-between;
+  align-items: center; 
+  margin-bottom: 10px; 
 }
 
 .reportSummary > div > div {
   display: flex;
   gap: 10px;
+  align-items: center; 
 }
-
-.reportSummary:hover {
-  border: 3px outset gold;
-  transform: scale(1.01, 1.1);
-  transform-origin: center;
-  z-index: 1;
-  transition: transform 0.1s;
+.candidateInfo>p{
+  color: black;
+  padding: 2px;
+  font-size:15px;
+}
+.reportSummary>h3{
+  font-size: 1.2rem;
+  font-weight: bold; 
+  color: #333; 
+  margin-bottom: 5px;
+}
+.reportSummary>p{
+  font-size: 1rem; 
+  color: #555;
 }

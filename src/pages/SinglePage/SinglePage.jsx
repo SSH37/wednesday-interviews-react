@@ -28,6 +28,14 @@ const SinglePage = () => {
     });
   }, []);
 
+  const getListBorderColor = () => {
+    if (reports.some((rep) => rep.status === "passed")) {
+      return "green";
+    } else {
+      return "red";
+    }
+  };
+
   return (
     <>
       {reportModalData ? (
@@ -35,10 +43,10 @@ const SinglePage = () => {
       ) : null}
       <Header />
       <div id="singlePage">
-        <div id="candidateSummary">
+        <div id="candidateSummary"><div id="candidateSummaryCard">
           {/* <img src={`${candData.avatar}`} alt={`${candData.name}`} /> */}
           <img src={imageUrl ? imageUrl : ""} alt={candData.name} />
-          <div>
+          <div className="candidateInfo">
             <p>{candData.name}</p>
             {date ? (
               <p>{`${date.getUTCDay()}.${date.getUTCMonth()}.${date.getUTCFullYear()}`}</p>
@@ -46,6 +54,7 @@ const SinglePage = () => {
             <p>{candData.email}</p>
             <p>{candData.education}</p>
           </div>
+        </div>
         </div>
         <div id="candidateReportsList">
           {reports.map((rep) => {
@@ -56,7 +65,8 @@ const SinglePage = () => {
                 className="reportSummary"
                 onClick={() => {
                   setReportModalData(rep);
-                }}
+                }}  
+                style={{ border: `3px solid ${getListBorderColor()}` }}
               >
                 <div>
                   <h3>{rep.companyName}</h3>
