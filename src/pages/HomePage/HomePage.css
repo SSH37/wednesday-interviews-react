@@ -74,6 +74,10 @@
   z-index: -1;
 }
 
+#search:not(:placeholder-shown) ~ #searchLabel {
+  z-index: -1;
+}
+
 #candidatesList {
   display: flex;
   flex-wrap: wrap;

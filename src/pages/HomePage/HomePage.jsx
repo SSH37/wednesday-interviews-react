@@ -11,6 +11,16 @@ import "./HomePage.css";
 const HomePage = () => {
   const [candidates, setCandidates] = useState([]);
   const [filterParam, setFilterParam] = useState("");
+  const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setFilterParam(inputValue);
+    }, 300);
+    return () => clearTimeout(timeoutId);
+  }, [inputValue, 300]);
+
+  // return <input type="text" value={inputValue} onChange={handleInputChange} />;
 
   useEffect(() => {
     fetchUrl(`${urlCandidates}${filterParam}`, (res) => {
@@ -33,8 +43,9 @@ const HomePage = () => {
                 type="search"
                 name="search"
                 id="search"
+                placeholder=""
                 onInput={(e) => {
-                  setFilterParam(`?name_like=${e.target.value}`);
+                  setInputValue(`?name_like=${e.target.value}`);
                 }}
               />
               <label htmlFor="search" id="searchLabel">
