@@ -1,7 +1,7 @@
-#content{
-    display: flex;
-    /* min-height: 84vh; */
-    /* add image
+#content {
+  display: flex;
+  min-height: calc(100vh - 210px);
+  /* add image
     background: url(); */
 }
 
@@ -9,6 +9,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  padding: 20px 50%;
+  gap: 20px;
+  padding: 20px 5%;
+  width: 100%;
 }

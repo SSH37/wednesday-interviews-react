@@ -1,0 +1,48 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    height: 300px;
+    border: 3px solid black;
+    box-shadow: 5px 5px 5px 3px rgba(0,0,0,0.5);
+    background : linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+    color:white;
+    word-wrap: break-word;
+}
+
+.card:hover {
+    border: aliceblue solid 3px;
+    transform: scale(1.1,1.1);
+    transform-origin: center;
+    z-index: 1;
+    transition: transform 0.3s;
+}
+
+.card > img {
+    border: aliceblue solid 3px;
+    border-radius: 50%;
+    width: calc(100% - 10px);
+    height: 65%;
+    margin: 5px;
+}
+
+.card > div {
+    padding: 10px;
+}
+
+.cardEmailHidden {
+    display:none;
+}
+
+.cardEmailHovered {
+    position:absolute;
+    display: block;
+    border: 1px solid black;
+    top: 70px;
+    left: 0px;
+    padding: 0 2px;
+    z-index: 2;
+    background-color: white;
+    color : black
+}

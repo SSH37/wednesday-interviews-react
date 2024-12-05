@@ -1,0 +1,19 @@
+.loginModal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+.loginContent {
+  border: 5px solid black;
+  min-width: 200px;
+  min-height: 100px;
+  width: 20vw;
+  height: 10vh;
+  background-color: white;
+}
