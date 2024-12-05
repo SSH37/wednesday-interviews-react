@@ -16,7 +16,7 @@
   justify-content: center;
   align-items: center;
 }
-#candidateSummaryCard{
+#candidateSummaryCard {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -24,7 +24,7 @@
   background: linear-gradient(135deg, #fbc2eb, #a18cd1);
   padding: 10px;
 }
-#candidateSummaryCard>img{
+#candidateSummaryCard > img {
   border-radius: 8px;
 }
 #candidateReportsList {
@@ -32,55 +32,54 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px; 
-  width: calc(100% - 300px);
-  padding: 20px; 
-  background-color: #f4f4f4; 
+  gap: 20px;
+  padding: 20px;
+  background-color: #f4f4f4;
 }
 
 .reportSummary {
   display: flex;
   flex-direction: column;
-  border-radius: 12px; 
-  padding: 15px 20px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  background-color: #fff; 
-  transition: box-shadow 0.3s, transform 0.3s; 
-  overflow: hidden; 
-  width: 100%; 
+  background-color: #fff;
+  transition: box-shadow 0.3s, transform 0.3s;
+  overflow: hidden;
+  width: 100%;
 }
 
 .reportSummary:hover {
-  transform: translateY(-5px) scale(1.03); 
+  transform: translateY(-5px) scale(1.03);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 2;
+  z-index: 1;
 }
 
 .reportSummary > div {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
-  margin-bottom: 10px; 
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .reportSummary > div > div {
   display: flex;
   gap: 10px;
-  align-items: center; 
+  align-items: center;
 }
-.candidateInfo>p{
+.candidateInfo > p {
   color: black;
   padding: 2px;
-  font-size:15px;
+  font-size: 15px;
 }
-.reportSummary>h3{
+.reportSummary > h3 {
   font-size: 1.2rem;
-  font-weight: bold; 
-  color: #333; 
+  font-weight: bold;
+  color: #333;
   margin-bottom: 5px;
 }
-.reportSummary>p{
-  font-size: 1rem; 
+.reportSummary > p {
+  font-size: 1rem;
   color: #555;
 }
