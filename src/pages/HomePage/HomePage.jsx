@@ -18,7 +18,7 @@ const HomePage = () => {
       setFilterParam(inputValue);
     }, 300);
     return () => clearTimeout(timeoutId);
-  }, [inputValue, 300]);
+  }, [inputValue]);
 
   // return <input type="text" value={inputValue} onChange={handleInputChange} />;
 

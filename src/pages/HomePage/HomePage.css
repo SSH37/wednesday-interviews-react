@@ -44,7 +44,7 @@
   overflow: hidden;
 }
 
-.searchBox:focus-within {
+.searchBox:focus-within, .searchBox:hover {
   border: darkorchid solid 0.188em;
 }
 

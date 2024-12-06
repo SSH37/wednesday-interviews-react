@@ -1,19 +1,66 @@
 .loginModal {
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 2;
 }
 
 .loginContent {
-  border: 5px solid black;
-  min-width: 200px;
-  min-height: 100px;
-  width: 20vw;
-  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 5px solid #673FD7; */
+  border-radius: 5em;
+  width: 500px;
+  height: 250px;
+  background-color: #5643CC;
+  /* background: linear-gradient(180deg, #673FD7 40%, rgba(0,0,0,1) 100%); */
+  padding: 50px 50px 30px 50px;
+}
+
+.loginContent > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loginInputField {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: large;
+}
+
+.loginInputField > label {
+  color: white;
+}
+
+.loginInputField > input {
+  max-width: 50%;
+}
+
+.loginInputField > input:focus {
+  outline: 3px solid purple;
+}
+
+.loginButton {
+  width: 100px;
+  height: 40px;
+  border-radius: 2em;
   background-color: white;
+  border: none;
+  font-size: large;
+}
+
+.loginButton:hover {
+  outline: 3px solid purple;
+}
+
+.clickedLogin {
+  background-color: gold;
 }
