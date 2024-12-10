@@ -17,7 +17,7 @@ const SinglePage = () => {
 
   useEffect(() => {
     fetchUrl(`${urlCandidates}/${id}`, (res) => {
-      setDate(new Date(res.birthday));
+      setDate(new Date(res.birthday).toLocaleDateString());
       setCandData(res);
     });
     fetchUrl(`${urlReports}?candidateId=${id}`, (res) => {
@@ -49,7 +49,10 @@ const SinglePage = () => {
           <div className="candidateInfo">
             <p>{candData.name}</p>
             {date ? (
-              <p>{`${date.getUTCDay()}.${date.getUTCMonth()}.${date.getUTCFullYear()}`}</p>
+              <>
+                {console.log(date)}
+                <p>{date}</p>
+              </>
             ) : null}
             <p>{candData.email}</p>
             <p>{candData.education}</p>
@@ -58,7 +61,7 @@ const SinglePage = () => {
         </div>
         <div id="candidateReportsList">
           {reports.map((rep) => {
-            const reportDate =  new Date(rep.interviewDate)
+            const reportDate = new Date(rep.interviewDate).toLocaleDateString();
             return (
               <div
                 key={rep.id}
@@ -70,7 +73,7 @@ const SinglePage = () => {
               >
                 <div>
                   <h3>{rep.companyName}</h3>
-                  <h3>{`${reportDate.getUTCDay()}.${reportDate.getUTCMonth()}.${reportDate.getUTCFullYear()}`}</h3>
+                  <h3>{reportDate}</h3>
                   <div>
                     <h3>{rep.phase}</h3>
                     <h3>{rep.status}</h3>
