@@ -1,49 +1,72 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 200px;
-    height: 300px;
-    border: 3px solid black;
-    border-radius: 25px;
-    box-shadow: 5px 5px 5px 3px rgba(0,0,0,0.5);
-    background : linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
-    color:white;
-    word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  height: 300px;
+  border: 3px solid black;
+  padding: 10px;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(
+    92.88deg,
+    #455eb5 9.16%,
+    #5643cc 43.89%,
+    #673fd7 64.72%
+  );
+  color: white;
+  user-select: contain;
+  word-wrap: break-word;
 }
 
 .card:hover {
-    border: aliceblue solid 3px;
-    transform: scale(1.1,1.1);
-    transform-origin: center;
-    z-index: 1;
-    transition: transform 0.3s;
+  border: purple solid 3px;
+  transform: scale(1.1, 1.1);
+  transform-origin: center;
+  z-index: 1;
+  transition: transform 0.3s;
+}
+
+.card > * {
+    pointer-events: none;
 }
 
 .card > img {
-    border: aliceblue solid 3px;
-    border-radius: 50%;
-    height: 50%;
-    margin: 20px;
-    object-fit: cover;
+  border: white solid 3px;
+  border-radius: 50%;
+  min-height: 40%;
+  object-fit: cover;
 }
 
-.card > div {
-    padding: 10px;
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 1.2rem;
 }
 
 .cardEmailHidden {
-    display:none;
+  display: none;
 }
 
 .cardEmailHovered {
-    position:absolute;
-    display: block;
-    border: 1px solid black;
-    top: 70px;
-    left: 0px;
-    padding: 0 2px;
-    z-index: 2;
-    background-color: white;
-    color : black
+  position:absolute;
+  animation: fade-in 0.3s ease-in;
+  display: block;
+  border: 3px solid purple;
+  border-radius: 20px;
+  height: 50px;
+  padding: 10px;
+  color: white;
+  background-color: #5643cc;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
