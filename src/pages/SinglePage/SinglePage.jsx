@@ -48,14 +48,9 @@ const SinglePage = () => {
           <img src={imageUrl ? imageUrl : ""} alt={candData.name} />
           <div className="candidateInfo">
             <p>{candData.name}</p>
-            {date ? (
-              <>
-                {console.log(date)}
-                <p>{date}</p>
-              </>
-            ) : null}
-            <p>{candData.email}</p>
-            <p>{candData.education}</p>
+            <p>Email: {candData.email}</p>
+            <p>Born: {date}</p>
+            <p>Education: {candData.education}</p>
           </div>
         </div>
         <div id="candidateReportsList">
@@ -67,7 +62,7 @@ const SinglePage = () => {
                 className="reportSummary"
                 onClick={() => {
                   setReportModalData(rep);
-                }}  
+                }}
                 style={{ border: `3px solid ${getListBorderColor(rep)}` }}
               >
                 <div>
@@ -78,7 +73,6 @@ const SinglePage = () => {
                     <h3>{rep.status}</h3>
                   </div>
                 </div>
-                <p>{`${rep.note.slice(0, 150)}...`}</p>
               </div>
             );
           })}

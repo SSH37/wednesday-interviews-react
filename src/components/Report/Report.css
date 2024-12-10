@@ -1,48 +1,60 @@
 .reportModal {
-    position: fixed; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 2;
-  }
-  
-  .reportContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 500px;
-    padding: 30px; 
-    background: linear-gradient(135deg, #fbc2eb, #a18cd1);
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
-  }
-  
-  .reportText {
-    font-size: 15px; 
-    color: #333; 
-    text-align: center;
-    margin: 0;
-  }
-  .closeButton {
-    background-color: transparent;
-    border: none;
-    font-size: 1.5rem;
-    color: #333;
-    cursor: pointer;
-    z-index: 3;
-    margin-left: 100%;
-  }
-  
-  .closeButton:hover {
-    color: red;
-  }
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
 
-  .reportIcon {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 15px;
-  }
+.reportContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+  padding: 30px;
+  background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.reportTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.closeButton {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: red;
+}
+
+.reportIcon {
+  width: 40px;
+  height: 100%;
+}
+
+.reportDateStatus {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.reportText {
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  margin: 0;
+}

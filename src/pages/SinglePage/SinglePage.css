@@ -7,22 +7,44 @@
 }
 
 #candidateSummary {
-  border-right: 3px solid purple;
   width: 300px;
   padding-right: 20px;
   padding-left: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
-  border-radius: 8px;
-}
-#candidateSummary>img{
-  width: 260px;
+  justify-content: space-evenly;
+  background: linear-gradient(
+    92.88deg,
+    #455eb5 9.16%,
+    #5643cc 43.89%,
+    #673fd7 64.72%
+  );
   border-radius: 8px;
 }
 
+#candidateSummary > img {
+  width:100%;
+  border: 5px solid white;
+  border-radius: 20px;
+}
+
+.candidateInfo {
+  border-top: 2px solid white;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.candidateInfo > p {
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.candidateInfo > p:nth-child(1) {
+  font-size: x-large;
+  border-bottom: 2px solid white;
+}
 
 #candidateReportsList {
   display: flex;
@@ -66,20 +88,14 @@
   gap: 10px;
   align-items: center;
 }
-.candidateInfo > p {
-  color: black;
-  padding: 10px;
-  font-size: 15px;
-}
-.candidateInfo{
-  text-align: center;
-}
+
 .reportSummary > h3 {
   font-size: 1.2rem;
   font-weight: bold;
   color: #333;
   margin-bottom: 5px;
 }
+
 .reportSummary > p {
   font-size: 1rem;
   color: #555;
