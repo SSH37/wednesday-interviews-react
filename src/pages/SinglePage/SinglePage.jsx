@@ -43,7 +43,7 @@ const SinglePage = () => {
       ) : null}
       <Header />
       <div id="singlePage">
-        <div id="candidateSummary"><div id="candidateSummaryCard">
+        <div id="candidateSummary">
           {/* <img src={`${candData.avatar}`} alt={`${candData.name}`} /> */}
           <img src={imageUrl ? imageUrl : ""} alt={candData.name} />
           <div className="candidateInfo">
@@ -57,7 +57,6 @@ const SinglePage = () => {
             <p>{candData.email}</p>
             <p>{candData.education}</p>
           </div>
-        </div>
         </div>
         <div id="candidateReportsList">
           {reports.map((rep) => {
