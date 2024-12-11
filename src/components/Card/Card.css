@@ -27,10 +27,6 @@
   transition: transform 0.3s;
 }
 
-.card > * {
-    pointer-events: none;
-}
-
 .card > img {
   border: white solid 3px;
   border-radius: 50%;
