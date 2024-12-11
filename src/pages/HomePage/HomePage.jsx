@@ -12,13 +12,24 @@ const HomePage = () => {
   const [candidates, setCandidates] = useState([]);
   const [filterParam, setFilterParam] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [candidateIds, setCandidateIds] = useState([]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      setFilterParam(inputValue);
+      setFilterParam(`?name_like=${inputValue}`);
     }, 300);
     return () => clearTimeout(timeoutId);
   }, [inputValue]);
+
+  useEffect(() => {
+    if (candidateIds.length > 0) {
+      let param = `?id=${candidateIds.slice(0,1)}`;
+      for (let el of candidateIds.slice(1)){
+        param = `${param}&id=${el}`
+      }
+      setFilterParam(param);
+    }
+  }, [candidateIds]);
 
   // return <input type="text" value={inputValue} onChange={handleInputChange} />;
 
@@ -32,7 +43,7 @@ const HomePage = () => {
     <>
       <Header />
       <div id="content">
-        <Sidebar />
+        <Sidebar setCandidateIds={setCandidateIds} />
         <div id="candidatesListParent">
           <div className="candidatesSubHeader">
             <p>Candidates</p>
@@ -45,7 +56,7 @@ const HomePage = () => {
                 id="search"
                 placeholder=""
                 onInput={(e) => {
-                  setInputValue(`?name_like=${e.target.value}`);
+                  setInputValue(e.target.value);
                 }}
               />
               <label htmlFor="search" id="searchLabel">

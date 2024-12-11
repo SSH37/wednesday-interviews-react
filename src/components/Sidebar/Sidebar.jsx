@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { fetchUrl } from "../../library";
 import { urlCompanies } from "../../constants/constants";
 import { useState, useEffect } from "react";
 import "./Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ setCandidateIds }) => {
   const [companies, setCompanies] = useState([]);
-  const [candidateIDs, setCandidateIDs] = useState([]);
+  // const [candidateIDs, setCandidateIDs] = useState([]);
 
   useEffect(() => {
     fetchUrl(urlCompanies + "?_embed=reports", (res) => {
       setCompanies(res);
     });
   }, []);
+
+  const handleClick = useCallback((el) => {
+    let niz = [];
+    el.reports.forEach((element) => {
+      niz.push(element.candidateId);
+    });
+    setCandidateIds(niz);
+  }, []);
+
+  // console.log(candidateIDs);
 
   return (
     <>
@@ -24,12 +34,7 @@ const Sidebar = () => {
               <li
                 key={el.id}
                 onClick={() => {
-                  let niz = [];
-                  el.reports.forEach((element) => {
-                    niz.push(element.candidateId);
-                  });
-                  setCandidateIDs(niz);
-                  console.log(candidateIDs);
+                  handleClick(el);
                 }}
               >
                 {el.name}
