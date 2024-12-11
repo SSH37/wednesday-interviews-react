@@ -15,17 +15,24 @@ const HomePage = () => {
   const [candidateIds, setCandidateIds] = useState([]);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setFilterParam(`?name_like=${inputValue}`);
-    }, 300);
-    return () => clearTimeout(timeoutId);
+    if (inputValue) {
+      const timeoutId = setTimeout(() => {
+        setFilterParam(`?name_like=${inputValue}`);
+      }, 300);
+      return () => clearTimeout(timeoutId);
+    } else {
+      const timeoutId = setTimeout(() => {
+        setFilterParam("");
+      }, 300);
+      return () => clearTimeout(timeoutId);
+    }
   }, [inputValue]);
 
   useEffect(() => {
     if (candidateIds.length > 0) {
-      let param = `?id=${candidateIds.slice(0,1)}`;
-      for (let el of candidateIds.slice(1)){
-        param = `${param}&id=${el}`
+      let param = `?id=${candidateIds.slice(0, 1)}`;
+      for (let el of candidateIds.slice(1)) {
+        param = `${param}&id=${el}`;
       }
       setFilterParam(param);
     }
@@ -34,9 +41,13 @@ const HomePage = () => {
   // return <input type="text" value={inputValue} onChange={handleInputChange} />;
 
   useEffect(() => {
-    fetchUrl(`${urlCandidates}${filterParam}`, (res) => {
-      setCandidates(res);
-    });
+    fetchUrl(
+      `${urlCandidates}${filterParam}`,
+      (res) => {
+        setCandidates(res);
+      },
+      true
+    );
   }, [filterParam]);
 
   return (
@@ -55,7 +66,7 @@ const HomePage = () => {
                 name="search"
                 id="search"
                 placeholder=""
-                onInput={(e) => {
+                onChange={(e) => {
                   setInputValue(e.target.value);
                 }}
               />

@@ -64,3 +64,8 @@
 .clickedLogin {
   background-color: gold;
 }
+
+.error {
+  border-bottom: 3px solid crimson;
+  color: crimson;
+}

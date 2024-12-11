@@ -9,9 +9,13 @@ const Sidebar = ({ setCandidateIds }) => {
   // const [candidateIDs, setCandidateIDs] = useState([]);
 
   useEffect(() => {
-    fetchUrl(urlCompanies + "?_embed=reports", (res) => {
-      setCompanies(res);
-    });
+    fetchUrl(
+      urlCompanies + "?_embed=reports",
+      (res) => {
+        setCompanies(res);
+      },
+      true
+    );
   }, []);
 
   const handleClick = useCallback((el) => {

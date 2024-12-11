@@ -9,20 +9,20 @@ import Report from "../../components/Report/Report";
 
 const SinglePage = () => {
   const [candData, setCandData] = useState("");
-  const [reports, setReports] = useState([]);
   const [imageUrl, setImageUrl] = useState();
   const [date, setDate] = useState();
   const [reportModalData, setReportModalData] = useState();
   const { id } = useParams();
 
   useEffect(() => {
-    fetchUrl(`${urlCandidates}/${id}`, (res) => {
-      setDate(new Date(res.birthday).toLocaleDateString());
-      setCandData(res);
-    });
-    fetchUrl(`${urlReports}?candidateId=${id}`, (res) => {
-      setReports(res);
-    });
+    fetchUrl(
+      `${urlCandidates}/${id}?_embed=reports`,
+      (res) => {
+        setDate(new Date(res.birthday).toLocaleDateString());
+        setCandData(res);
+      },
+      true
+    );
     fetchUrl("https://randomuser.me/api/?inc=picture&noinfo", (res) => {
       setImageUrl(res.results[0].picture.large);
     });
@@ -54,7 +54,7 @@ const SinglePage = () => {
           </div>
         </div>
         <div id="candidateReportsList">
-          {reports.map((rep) => {
+          {candData?.reports?.map((rep) => {
             const reportDate = new Date(rep.interviewDate).toLocaleDateString();
             return (
               <div

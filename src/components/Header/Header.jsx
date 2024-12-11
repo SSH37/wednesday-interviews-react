@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import "./Header.css";
-// import { useState } from 'react'
 import { useNavigate } from "react-router";
 import { loginCtx } from "../../contexts/contexts";
 
 const Header = () => {
   const nav = useNavigate();
-  const { setLoginShow } = useContext(loginCtx);
+  const { setLoginShow, loggedIn } = useContext(loginCtx);
 
   return (
     <div className="header">
@@ -27,10 +26,15 @@ const Header = () => {
         </button>
         <button
           onClick={() => {
-            setLoginShow(true);
+            if (!loggedIn){
+              setLoginShow(true);
+            } else {
+              sessionStorage.removeItem("accessToken");
+              nav(0);
+            }
           }}
         >
-          LOGIN
+          {loggedIn ? "LOGOFF" : "LOGIN"}
         </button>
       </div>
     </div>

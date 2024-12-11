@@ -15,12 +15,16 @@ const Card = ({ data }) => {
   const [emailPos, setEmailPos] = useState([0, 0]);
 
   useEffect(() => {
-    fetchUrl("https://randomuser.me/api/?inc=picture&noinfo", (res) => {
-      setImageUrl(res.results[0].picture.large);
-    });
+    fetchUrl(
+      "https://randomuser.me/api/?inc=picture&noinfo",
+      (res) => {
+        setImageUrl(res.results[0].picture.large);
+      }
+    );
   }, []);
 
-  const handleCardHover = useCallback((e) => {
+  const handleCardHover = useCallback(
+    (e) => {
       if (!emailShowTimestamp) {
         setEmailShowTimestamp(Date.now());
         setEmailPos([e.clientX, e.clientY]);
@@ -39,13 +43,15 @@ const Card = ({ data }) => {
           }, emailShowDelay)
         );
       }
-  },[emailShowTimestamp])
+    },
+    [emailShowTimestamp]
+  );
 
   const handleCardLeave = useCallback(() => {
     clearTimeout(emailShowId);
     setEmailShowTimestamp(null);
     setEmailShow(false);
-  },[emailShowTimestamp])
+  }, [emailShowTimestamp]);
 
   useEffect(() => {
     if (!emailShow) {
@@ -84,8 +90,8 @@ const Card = ({ data }) => {
         onMouseLeave={() => {
           setEmailShow(false);
         }}
-        onClick={()=>{
-          if(!window.getSelection().toString()){
+        onClick={() => {
+          if (!window.getSelection().toString()) {
             setEmailShow(false);
           }
         }}

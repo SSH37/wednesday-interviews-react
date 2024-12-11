@@ -9,9 +9,10 @@ import LoginModal from "./components/Login/LoginModal";
 
 function App() {
   const [loginShow, setLoginShow] = useState(false);
+  const [loggedIn] = useState(sessionStorage.getItem("accessToken"));
 
   return (
-    <LoginProvider value={{ setLoginShow }}>
+    <LoginProvider value={{ setLoginShow, loggedIn }}>
       {loginShow ? <LoginModal /> : ""}
       <Routes>
         <Route path="/" element={<WelcomePage />} />

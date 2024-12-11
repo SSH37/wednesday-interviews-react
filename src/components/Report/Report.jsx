@@ -3,7 +3,6 @@ import { LuNewspaper } from "react-icons/lu";
 const Report = ({ data, setData }) => {
   const reportDate = new Date(data.interviewDate).toLocaleDateString();
 
-  console.log(data);
   return (
     <div className="reportModal" onClick={() => setData(null)}>
       <div
