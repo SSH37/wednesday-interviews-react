@@ -6,15 +6,24 @@ import "./Sidebar.css"
 
 const Sidebar = () => {
   const [companies, setCompanies]=useState([])
+  const [candidateIDs, setCandidateIDs]=useState([])
 
-  useEffect(()=>{fetchUrl(urlCompanies,(res)=>{setCompanies(res)})},[])
+
+  useEffect(()=>{fetchUrl(urlCompanies+'?_embed=reports',(res)=>{setCompanies(res)})},[])
 
   return (<>
-    <div className='sidebar'><h2>Sidebar</h2>
+    <div className='sidebar'><h2>Companies</h2>
     <ul>
     {
       companies.map((el)=>{
-        return <li key={el.id}>{el.name}</li>
+        return <li key={el.id} onClick={()=>{
+          let niz=[];
+          el.reports.forEach(element => {
+            niz.push(element.candidateId);
+          });
+        setCandidateIDs(niz)
+        console.log(candidateIDs);
+        }}>{el.name}</li>
       })
     }
    

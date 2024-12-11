@@ -4,3 +4,45 @@
   padding: 10px 10px 10px 20px;
   box-shadow: 7px 0px 5px -7px rgba(0, 0, 0, 0.5);
 }
+
+ul {
+  padding-inline-start: 1.5em;
+  font-weight: 400;
+
+  ::marker {
+    content: ">";
+    color: #673FD7;
+  }
+
+  ul ::marker {
+    content: ">>";
+  }
+}
+
+li {
+  position: relative;
+  padding-inline-start: 0.5em;
+  padding-top: 1.5em;
+  border-bottom: 1px solid #48b2;
+  cursor: default;
+  transition: color 0.4s;
+
+  &:hover {
+    color: #673FD7;
+    cursor: pointer;
+
+    &::marker {
+      font-weight: 700;
+    }
+
+    &::after {
+      opacity: 1;
+      transition-delay: 0.2s;
+    }
+  }
+}
+
+h2 {
+  color: #673FD7;
+
+}
