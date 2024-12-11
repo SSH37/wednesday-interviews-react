@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import "./Card.css";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { fetchUrl } from "../../library";
 import { useNavigate } from "react-router";
-const emailShowDelay = 300;
+import "./Card.css";
+const emailShowDelay = 250;
 
 const Card = ({ data }) => {
   const [imageUrl, setImageUrl] = useState("");
@@ -20,13 +20,36 @@ const Card = ({ data }) => {
     });
   }, []);
 
+  const handleCardHover = useCallback((e) => {
+      if (!emailShowTimestamp) {
+        setEmailShowTimestamp(Date.now());
+        setEmailPos([e.clientX, e.clientY]);
+        setEmailShowId(
+          setTimeout(() => {
+            setEmailShow(true);
+          }, emailShowDelay)
+        );
+      } else if (emailShowTimestamp + emailShowDelay > Date.now()) {
+        setEmailShowTimestamp(Date.now());
+        setEmailPos([e.pageX, e.pageY]);
+        clearTimeout(emailShowId);
+        setEmailShowId(
+          setTimeout(() => {
+            setEmailShow(true);
+          }, emailShowDelay)
+        );
+      }
+  },[emailShowTimestamp])
+
+  const handleCardLeave = useCallback(() => {
+    clearTimeout(emailShowId);
+    setEmailShowTimestamp(null);
+    setEmailShow(false);
+  },[emailShowTimestamp])
+
   useEffect(() => {
     if (!emailShow) {
-      console.log(emailShow, emailPos);
       setEmailPos([0, 0]);
-    } else {
-      console.log(emailShow, emailPos);
-      // setEmailPos([mouseEv.clientX, mouseEv.clientY])
     }
   }, [emailShow]);
 
@@ -35,29 +58,12 @@ const Card = ({ data }) => {
       <div
         className="card"
         onClick={() => {
-          nav(`/candidate/${data.id}`);
-        }}
-        onMouseMove={(e) => {
-          if (!emailShowTimestamp) {
-            console.log("fired email show");
-            setEmailShowTimestamp(Date.now());
-            setEmailShowId(
-              setTimeout(() => {
-                setEmailShow(true);
-              }, emailShowDelay)
-            );
-          } else if (emailShowTimestamp + emailShowDelay < Date.now()) {
-          } else {
-            console.log("Setting email position");
-            console.log(e.clientX, e.clientY);
-            setEmailPos([e.clientX, e.clientY]);
+          if (!window.getSelection().toString()) {
+            nav(`/candidate/${data.id}`);
           }
         }}
-        onMouseLeave={() => {
-          clearTimeout(emailShowId);
-          setEmailShowTimestamp(null);
-          setEmailShow(false);
-        }}
+        onMouseMove={handleCardHover}
+        onMouseLeave={handleCardLeave}
       >
         {/* <img src={data.avatar} alt={data.name} /> */}
         <img src={imageUrl ? imageUrl : ""} alt={data.name} />
@@ -72,11 +78,16 @@ const Card = ({ data }) => {
           top: `${emailPos[1]}px`,
         }}
         className={`${emailShow ? "cardEmailHovered" : "cardEmailHidden"}`}
-        onMouseOver={(e) => {
-            setEmailShow(true);
+        onMouseOver={() => {
+          setEmailShow(true);
         }}
         onMouseLeave={() => {
           setEmailShow(false);
+        }}
+        onClick={()=>{
+          if(!window.getSelection().toString()){
+            setEmailShow(false);
+          }
         }}
       >
         {data.email}
