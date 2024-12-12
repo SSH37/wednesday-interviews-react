@@ -1,21 +1,26 @@
 import React, { useCallback } from "react";
-import { fetchUrl } from "../../library";
 import { urlCompanies } from "../../constants/constants";
 import { useState, useEffect } from "react";
 import "./Sidebar.css";
 
 const Sidebar = ({ setCandidateIds }) => {
   const [companies, setCompanies] = useState([]);
-  // const [candidateIDs, setCandidateIDs] = useState([]);
 
   useEffect(() => {
-    fetchUrl(
-      urlCompanies + "?_embed=reports",
-      (res) => {
-        setCompanies(res);
-      },
-      true
-    );
+    (async () => {
+      try {
+        const response = await fetch(`${urlCompanies}?_embed=reports`);
+
+        if (response.ok) {
+          const result = await response.json();
+          setCompanies(result);
+        } else {
+          throw new Error(response.statusText);
+        }
+      } catch (e) {
+        console.log(e.message);
+      }
+    })();
   }, []);
 
   const handleClick = useCallback((el) => {
@@ -25,8 +30,6 @@ const Sidebar = ({ setCandidateIds }) => {
     });
     setCandidateIds(niz);
   }, []);
-
-  // console.log(candidateIDs);
 
   return (
     <>

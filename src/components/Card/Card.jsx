@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { fetchUrl } from "../../library";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import "./Card.css";
 const emailShowDelay = 250;
@@ -15,12 +14,22 @@ const Card = ({ data }) => {
   const [emailPos, setEmailPos] = useState([0, 0]);
 
   useEffect(() => {
-    fetchUrl(
-      "https://randomuser.me/api/?inc=picture&noinfo",
-      (res) => {
-        setImageUrl(res.results[0].picture.large);
+    (async () => {
+      try {
+        const response = await fetch(
+          "https://randomuser.me/api/?inc=picture&noinfo"
+        );
+
+        if (response.ok) {
+          const result = await response.json();
+          setImageUrl(result.results[0].picture.large);
+        } else {
+          throw new Error(response.statusText);
+        }
+      } catch (e) {
+        console.log(e.message);
       }
-    );
+    })();
   }, []);
 
   const handleCardHover = useCallback(

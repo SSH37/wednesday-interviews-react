@@ -3,7 +3,6 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Card from "../../components/Card/Card";
-import { fetchUrl } from "../../library";
 import { urlCandidates } from "../../constants/constants";
 import { FaSearch } from "react-icons/fa";
 import "./HomePage.css";
@@ -38,16 +37,21 @@ const HomePage = () => {
     }
   }, [candidateIds]);
 
-  // return <input type="text" value={inputValue} onChange={handleInputChange} />;
-
   useEffect(() => {
-    fetchUrl(
-      `${urlCandidates}${filterParam}`,
-      (res) => {
-        setCandidates(res);
-      },
-      true
-    );
+    (async () => {
+      try {
+        const response = await fetch(`${urlCandidates}${filterParam}`);
+
+        if (response.ok) {
+          const result = await response.json();
+          setCandidates(result);
+        } else {
+          throw new Error(response.statusText);
+        }
+      } catch (e) {
+        console.log(e.message);
+      }
+    })();
   }, [filterParam]);
 
   return (

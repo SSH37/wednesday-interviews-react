@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { useParams } from "react-router";
-import { fetchUrl } from "../../library";
-import { urlCandidates, urlReports } from "../../constants/constants";
+import { urlCandidates } from "../../constants/constants";
 import "./SinglePage.css";
 import Report from "../../components/Report/Report";
 
@@ -15,18 +14,34 @@ const SinglePage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchUrl(
-      `${urlCandidates}/${id}?_embed=reports`,
-      (res) => {
-        setDate(new Date(res.birthday).toLocaleDateString());
-        setCandData(res);
-      },
-      true
-    );
-    fetchUrl("https://randomuser.me/api/?inc=picture&noinfo", (res) => {
-      setImageUrl(res.results[0].picture.large);
-    });
-  }, []);
+    (async () => {
+      try {
+        const response = await fetch(`${urlCandidates}/${id}?_embed=reports`);
+        if (response.ok) {
+          const result = await response.json();
+          setDate(new Date(result.birthday).toLocaleDateString());
+          setCandData(result);
+        } else {
+          throw new Error(response.statusText);
+        }
+      } catch (e) {
+        console.log(e.message);
+      }
+      try {
+        const response = await fetch(
+          "https://randomuser.me/api/?inc=picture&noinfo"
+        );
+        if (response.ok) {
+          const result = await response.json();
+          setImageUrl(result.results[0].picture.large);
+        } else {
+          throw new Error(response.statusText);
+        }
+      } catch (e) {
+        console.log(e.message);
+      }
+    })();
+  }, [id]);
 
   const getListBorderColor = (rep) => {
     if (rep.status === "passed") {

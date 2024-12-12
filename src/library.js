@@ -14,7 +14,6 @@ export const fetchUrl = (url, callback, firstParty = false, options) => {
       }
     }
     
-    // console.log(options);
     fetch(url, options)
       .then((res) => {
         if (res.ok) {
