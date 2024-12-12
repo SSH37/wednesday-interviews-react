@@ -9,6 +9,7 @@ import { loginCtx } from "../../contexts/contexts";
 import AdminCompanyEditModal from "../../components/AdminCompanyEditModal/AdminCompanyEditModal";
 import AdminReportEditModal from "../../components/AdminReportEditModal/AdminReportEditModal";
 import { useNavigate } from "react-router";
+import AdminAddCompanyModal from "../../components/AdminAddCompanyModal/AdminAddCompanyModal";
 
 const AdminPage = () => {
   const [page, setPage] = useState("companies"); // Default to 'companies'
@@ -18,6 +19,7 @@ const AdminPage = () => {
   const [error, setError] = useState(null);
   const {loggedIn} = useContext(loginCtx);
   const [companyEditModal, setCompanyEditModal] = useState(null);
+  const [companyAddModal, setCompanyAddModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -110,13 +112,13 @@ const AdminPage = () => {
 
   const handleEditCandidate = (id) => {
     alert(`Edit Candidate with ID: ${id}`);
-
+  }
   const handleAddCompany = async () => {
     const newCompany = {
       name: "New Company",
       email: "company@company.rs",
     };
-
+    
     try {
       const response = await fetch(urlCompanies, {
         method: "POST",
@@ -163,6 +165,7 @@ const AdminPage = () => {
   return (
     <div>
       {companyEditModal ? <AdminCompanyEditModal data={companyEditModal} setData={setCompanyEditModal}/> :null}
+      {companyAddModal ? <AdminAddCompanyModal setOpen={setCompanyAddModal}/> : null}
       {/* <AdminReportEditModal /> */}
       <Header />
       <div className="admin-content">
@@ -170,7 +173,7 @@ const AdminPage = () => {
         {page === "companies" && (
           <div className="companies-page">
             <h2 className="title">Companies</h2>
-            <button onClick={handleAddCompany}>Add Company</button>
+            <button onClick={()=>{setCompanyAddModal(true)}}>Add Company</button>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             {!loading && !error && (

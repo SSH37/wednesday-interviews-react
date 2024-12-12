@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { urlCandidates } from "../../constants/constants";
 import { loginCtx } from "../../contexts/contexts";
 import "./AddCandidatePage.css";
-
-
 
 const AddCandidatePage = () => {
     
