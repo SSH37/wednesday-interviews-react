@@ -6,124 +6,115 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  .admin-content {
+}
+
+.admin-content {
     display: flex;
-    margin-left: 250px;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
+    /* margin-left: 250px; */
     height: 100vh;
-  }
-  
-  .sidebarAdmin {
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    background-color: #2c3e50;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-  }
-  
-  .sidebarAdmin h2 {
+}
+
+
+
+.sidebarAdmin h2 {
     margin: 15px 0;
     cursor: pointer;
     transition: color 0.3s ease;
-  }
-  
-  .sidebarAdmin h2:hover {
+}
+
+.sidebarAdmin h2:hover {
     color: #1abc9c;
-  }
-  
-  /* Candidates and Companies page */
-  .candidates-page,
-  .companies-page {
+}
+
+/* Candidates and Companies page */
+.candidates-page,
+.companies-page {
     width: 100%;
-    max-width: 900px;
     background: #f8f9fa;
+
     padding: 20px;
-    border-radius: 8px;
+    padding-right: 200px;
+
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Table Styles */
-  .candidates-table,
-  .companies-table {
+    padding-left: 250px;
+    /* Match the sidebar width */
+
+    /* Add padding for spacing */
+    flex: 1;
+    /* Use remaining space */
+}
+
+/* Table Styles */
+.candidates-table,
+.companies-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-  }
-  
-  .candidates-table th,
-  .companies-table th,
-  .candidates-table td,
-  .companies-table td {
+}
+
+.candidates-table th,
+.companies-table th,
+.candidates-table td,
+.companies-table td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
-  }
-  
-  .candidates-table th,
-  .companies-table th {
+}
+
+.candidates-table th,
+.companies-table th {
     background-color: #2c3e50;
     color: white;
     font-weight: bold;
-  }
-  
-  .candidates-table tr:nth-child(even),
-  .companies-table tr:nth-child(even) {
+}
+
+.candidates-table tr:nth-child(even),
+.companies-table tr:nth-child(even) {
     background-color: #f2f2f2;
-  }
-  
-  .candidates-table tr:hover,
-  .companies-table tr:hover {
+}
+
+.candidates-table tr:hover,
+.companies-table tr:hover {
     background-color: #e1f5fe;
-  }
-  
-  /* Button Styles */
-  .candidates-table td button,
-  .companies-table td button {
+}
+
+/* Button Styles */
+.candidates-table td button,
+.companies-table td button {
     background-color: #2c3e50;
     color: white;
     border: none;
-    border-radius: 4px;
+
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-left: 5px;
-  }
-  
-  .candidates-table td button:hover,
-  .companies-table td button:hover {
+}
+
+.candidates-table td button:hover,
+.companies-table td button:hover {
     background-color: #1abc9c;
-  }
-  
-  /* Add/Edit/Delete Button */
-  .candidates-page button,
-  .companies-page button {
+}
+
+/* Add/Edit/Delete Button */
+.candidates-page button,
+.companies-page button {
     background-color: #1abc9c;
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
+
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .candidates-page button:hover,
-  .companies-page button:hover {
+}
+
+.candidates-page button:hover,
+.companies-page button:hover {
     background-color: #16a085;
-  }
-  
-  /* Flexbox for buttons inside table */
-  .td-buttons {
+}
+
+/* Flexbox for buttons inside table */
+.td-buttons {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
+}

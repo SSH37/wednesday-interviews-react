@@ -4,6 +4,7 @@ import SidebarAdmin from "../../components/SidebarAdmin/SidebarAdmin";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { urlCompanies, urlCandidates } from "../../constants/constants";
+import Modal from "react-modal";
 
 const AdminPage = () => {
   const [page, setPage] = useState("companies"); // Default to 'companies'
@@ -67,7 +68,7 @@ const AdminPage = () => {
   };
 
   const handleEditCompany = (id) => {
-    alert(`Edit Company with ID: ${id}`); // Replace this with actual edit logic
+    alert(`Edit Company with ID: ${id}`); 
   };
 
   const handleAddCompany = async () => {
@@ -96,8 +97,10 @@ const AdminPage = () => {
   return (
     <div>
       <Header />
-      <SidebarAdmin setPage={setPage} />
+      
+      
       <div className="admin-content">
+      <SidebarAdmin setPage={setPage} />
         {page === "companies" && (
           <div className="companies-page">
             <h2>Companies</h2>

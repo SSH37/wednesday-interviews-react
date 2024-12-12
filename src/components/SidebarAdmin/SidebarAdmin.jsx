@@ -8,7 +8,6 @@ import "./SidebarAdmin.css"
 const SidebarAdmin = ({setPage}) => {
     
   return (
-    <div>
       <div className="sidebarAdmin">
         <h2 onClick={()=>{
             setPage('companies');
@@ -18,7 +17,7 @@ const SidebarAdmin = ({setPage}) => {
             console.log(setPage)
         }}>-Candidates</h2>
       </div>
-    </div>
+    
   )
 }
 
