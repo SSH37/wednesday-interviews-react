@@ -1,39 +1,83 @@
 .add-candidate-page {
-    padding: 20px;
+    padding: 30px;
     max-width: 600px;
     margin: auto;
+    background-color: #f9f9f9; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.page{
+    min-height: calc(100vh - 210px);
+    display: flex;
+
 }
 
 .add-candidate-page h2 {
     text-align: center;
+    font-size: 2rem; 
+    font-weight: 600;
+    color: #333; 
+    margin-bottom: 20px; 
 }
 
 .add-candidate-page form {
     display: flex;
     flex-direction: column;
+    gap: 20px; 
 }
 
 .add-candidate-page label {
-    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555; 
+    margin-bottom: 5px;
 }
 
 .add-candidate-page input {
-    padding: 10px;
-    margin-top: 5px;
+    padding: 12px;
+    font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
+    transition: all 0.3s ease; 
+    margin-left: 5px;
+}
+
+.add-candidate-page input:focus {
+    border-color: #007bff; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+    outline: none; 
 }
 
 .add-candidate-page button {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #007bff;
+    padding: 12px;
+    background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease; 
 }
 
 .add-candidate-page button:hover {
-    background-color: #0056b3;
+    background-image: linear-gradient(92.88deg, #955fc1 9.16%, #9c40c9 43.89%, #9c4599 64.72%);
+}
+
+.add-candidate-page button:active {
+    background-color: #004085; 
+}
+
+.add-candidate-page button:disabled {
+    background-color: #cccccc; 
+    cursor: not-allowed;
+}
+
+.add-candidate-page .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add-candidate-page .input-group input {
+    width: 100%;
 }

@@ -51,6 +51,7 @@ const AddCandidatePage = () => {
   return (
     <div>
     <Header/>
+    <div className="page">
     <div className="add-candidate-page">
       <h2>Add Candidate</h2>
       <form onSubmit={handleSubmit}>
@@ -105,7 +106,7 @@ const AddCandidatePage = () => {
         </label>
         <button type="submit">Add Candidate</button>
       </form>
-    </div>
+    </div></div>
     <Footer/>
     </div>
   );

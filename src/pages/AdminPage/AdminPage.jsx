@@ -113,6 +113,7 @@ const AdminPage = () => {
   const handleEditCandidate = (id) => {
     alert(`Edit Candidate with ID: ${id}`);
   }
+
   const handleAddCompany = async () => {
     const newCompany = {
       name: "New Company",
