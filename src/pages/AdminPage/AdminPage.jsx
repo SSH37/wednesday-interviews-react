@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import SidebarAdmin from "../../components/SidebarAdmin/SidebarAdmin";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import AddCandidatePage from "../AddCandidatePage/AddCandidatePage";
 import { urlCompanies, urlCandidates } from "../../constants/constants";
 import { loginCtx } from "../../contexts/contexts";
 import AdminCompanyEditModal from "../../components/AdminCompanyEditModal/AdminCompanyEditModal";
@@ -15,8 +16,9 @@ const AdminPage = () => {
   const [companies, setCompanies] = useState([]); // State for companies
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const {loggedIn} = useContext(loginCtx);
   const [companyEditModal, setCompanyEditModal] = useState(null);
-  const { loggedIn } = useContext(loginCtx);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (page === "candidates") {
@@ -68,6 +70,7 @@ const AdminPage = () => {
       });
       if (!response.ok) {
         throw new Error("Failed to delete company");
+        
       }
       setCompanies((prev) => prev.filter((company) => company.id !== id));
     } catch (err) {
@@ -107,13 +110,13 @@ const AdminPage = () => {
 
   const handleEditCandidate = (id) => {
     alert(`Edit Candidate with ID: ${id}`);
-  };
 
   const handleAddCompany = async () => {
     const newCompany = {
       name: "New Company",
-      location: "New York",
+      email: "company@company.rs",
     };
+
     try {
       const response = await fetch(urlCompanies, {
         method: "POST",
@@ -167,7 +170,7 @@ const AdminPage = () => {
         {page === "companies" && (
           <div className="companies-page">
             <h2>Companies</h2>
-            <button onClick={handleAddCompany}>Add Company</button>
+            <button onClick={() => {}}>Add Company</button>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             {!loading && !error && (
@@ -200,7 +203,7 @@ const AdminPage = () => {
         {page === "candidates" && (
           <div className="candidates-page">
             <h2>Candidates</h2>
-            <button onClick={handleAddCandidate}>Add Candidate</button>
+            <button onClick={()=>{navigate("/add-candidate")}}>Add Candidate</button>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             {!loading && !error && (
@@ -243,5 +246,3 @@ const AdminPage = () => {
 };
 
 export default AdminPage;
-
-// DODATI FUNKCIONALNOST DUGMICIMA, POPRAVITI FUNKCIJE HANDLEADD DELETE EDIT, TE POPRAVLJENE FUNKCIJE DODATI I ZA KANDIDATE

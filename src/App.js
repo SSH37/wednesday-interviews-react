@@ -7,6 +7,7 @@ import AdminPage from "./pages/AdminPage/AdminPage";
 import { useState } from "react";
 import { LoginProvider } from "./contexts/contexts";
 import LoginModal from "./components/Login/LoginModal";
+import AddCandidatePage from "./pages/AddCandidatePage/AddCandidatePage";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/candidate/:id" element={<SinglePage />} />
         <Route path="/*" element={<Navigate to={"/"} />} />
         <Route path="/admin" element={loggedIn?<AdminPage />:<Navigate to={"/"}/>} />
+        <Route path='/add-candidate' element={loggedIn?<AddCandidatePage />:<Navigate to={"/"}} />
       </Routes>
     </LoginProvider>
   );
