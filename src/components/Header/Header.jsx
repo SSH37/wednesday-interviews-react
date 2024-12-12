@@ -9,10 +9,13 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="rightSide">
+      <div className="leftSide"
+      onClick={()=>{
+        nav("/")
+      }}>
         <h1>WI</h1>
       </div>
-      <div className="leftSide">
+      <div className="rightSide">
         <button
           onClick={() => {
             if (window.location.pathname == "/home") {
