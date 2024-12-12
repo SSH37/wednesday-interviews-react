@@ -1,0 +1,39 @@
+.add-candidate-page {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.add-candidate-page h2 {
+    text-align: center;
+}
+
+.add-candidate-page form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-candidate-page label {
+    margin-bottom: 10px;
+}
+
+.add-candidate-page input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-candidate-page button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-candidate-page button:hover {
+    background-color: #0056b3;
+}

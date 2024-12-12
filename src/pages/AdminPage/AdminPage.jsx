@@ -3,9 +3,10 @@ import React, { useEffect, useState, useContext } from "react";
 import SidebarAdmin from "../../components/SidebarAdmin/SidebarAdmin";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import AddCandidatePage from "../AddCandidatePage/AddCandidatePage";
 import { urlCompanies, urlCandidates } from "../../constants/constants";
-import Modal from "react-modal";
 import { loginCtx } from "../../contexts/contexts";
+import { useNavigate } from "react-router-dom";
 
 const AdminPage = () => {
   const [page, setPage] = useState("companies"); // Default to 'companies'
@@ -14,7 +15,8 @@ const AdminPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const {loggedIn} = useContext(loginCtx);
-  
+  console.log("Context value:", loggedIn);
+  const navigate = useNavigate();
 
   
 
@@ -115,7 +117,7 @@ const AdminPage = () => {
         {page === "companies" && (
           <div className="companies-page">
             <h2>Companies</h2>
-            <button onClick={handleAddCompany}>Add Company</button>
+            <button onClick={() => {}}>Add Company</button>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             {!loading && !error && (
@@ -144,7 +146,7 @@ const AdminPage = () => {
         {page === "candidates" && (
           <div className="candidates-page">
             <h2>Candidates</h2>
-            <button>Add Candidate</button>
+            <button onClick={()=>{navigate("/add-candidate")}}>Add Candidate</button>
 
 
             {loading && <p>Loading...</p>}
@@ -181,5 +183,3 @@ const AdminPage = () => {
 };
 
 export default AdminPage;
-
-// DODATI FUNKCIONALNOST DUGMICIMA, POPRAVITI FUNKCIJE HANDLEADD DELETE EDIT, TE POPRAVLJENE FUNKCIJE DODATI I ZA KANDIDATE
