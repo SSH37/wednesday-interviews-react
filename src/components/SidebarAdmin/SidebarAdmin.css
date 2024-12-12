@@ -1,27 +1,72 @@
 .sidebarAdmin {
-    background-color: aliceblue;
+    background-color: aliceblue; 
     min-width: 200px;
-    width: 200px;
-    padding: 10px 10px 10px 20px;
-    box-shadow: 7px 0px 5px -7px rgba(0, 0, 0, 0.5);
     width: 250px;
-    top: 0;
-    left: 0;
+    padding: 20px;
+    box-shadow: 7px 0px 5px -7px rgba(0, 0, 0, 0.5);
     height: 100vh;
-    color: white;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
-
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-h2 {
-    color: #000000;
+.sidebarAdmin::before,
+.sidebarAdmin::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, #673FD7, transparent);
+    top: 0;
+    left: 0;
+    opacity: 0.2;
+    z-index: -1;
 }
 
-h2:hover {
+.sidebarAdmin::after {
+    left: auto;
+    right: 0;
+    background: linear-gradient(to top, #673FD7, transparent);
+}
+
+.sidebarAdmin h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    text-align: left;
+    position: relative;
+}
+
+.sidebarAdmin h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0%;
+    background-color: #673FD7;
+    transition: width 0.3s ease-in-out;
+}
+
+.sidebarAdmin h2:hover::before {
+    width: 100%;
+}
+
+.sidebarAdmin h2:hover {
     color: #673FD7;
     cursor: pointer;
+    transform: translateX(5px);
+}
 
+.sidebarAdmin h2.active {
+    color: #673FD7;
+    font-weight: 700;
+    border-left: 4px solid #673FD7;
 }

@@ -11,11 +11,11 @@ const SidebarAdmin = ({setPage}) => {
       <div className="sidebarAdmin">
         <h2 onClick={()=>{
             setPage('companies');
-        }}>-Companies</h2>
+        }}>Companies</h2>
         <h2 onClick={()=>{
             setPage('candidates');
             console.log(setPage)
-        }}>-Candidates</h2>
+        }}>Candidates</h2>
       </div>
     
   )

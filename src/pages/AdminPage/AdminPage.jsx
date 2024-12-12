@@ -103,7 +103,7 @@ const AdminPage = () => {
       <SidebarAdmin setPage={setPage} />
         {page === "companies" && (
           <div className="companies-page">
-            <h2>Companies</h2>
+            <h2 className="title">Companies</h2>
             <button onClick={handleAddCompany}>Add Company</button>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
@@ -112,6 +112,7 @@ const AdminPage = () => {
                 <thead>
                   <tr>
                     <th>Company Name</th>
+                    <th>Email</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -119,6 +120,7 @@ const AdminPage = () => {
                   {companies.map((company) => (
                     <tr key={company.id}>
                       <td>{company.name}</td>
+                      <td>{company.email}</td>
                       <td className="td-buttons">
                         <button onClick={() => handleEditCompany(company.id)}>Edit</button>
                         <button onClick={() => handleDeleteCompany(company.id)}>Delete</button>
@@ -132,7 +134,7 @@ const AdminPage = () => {
         )}
         {page === "candidates" && (
           <div className="candidates-page">
-            <h2>Candidates</h2>
+            <h2 className="title">Candidates</h2>
             <button>Add Candidate</button>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
