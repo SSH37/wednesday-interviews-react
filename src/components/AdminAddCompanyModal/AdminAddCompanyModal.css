@@ -1,42 +1,122 @@
 .companyAddModal {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 2;
-  }
-  
-  .companyAddContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    width: 500px;
-    padding: 30px;
-    background: linear-gradient(135deg, #fbc2eb, #a18cd1);
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .companyAddTop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .closeButton {
-    background-color: transparent;
-    border: none;
-    font-size: 2rem;
-    color: #333;
-    cursor: pointer;
-  }
-  
-  .closeButton:hover {
-    color: red;
-  }
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+.companyAddContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+  padding: 30px;
+  background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+  background: aliceblue;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.companyAddTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.closeButton {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: #9c40c9;
+}
+
+.companyAddContent h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.companyAddContent form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.companyAddContent label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.companyAddContent input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+}
+
+.companyAddContent input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.submitButton {
+  padding: 12px;
+  background-image: linear-gradient(
+    92.88deg,
+    #455eb5 9.16%,
+    #5643cc 43.89%,
+    #673fd7 64.72%
+  );
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-image: linear-gradient(
+    92.88deg,
+    #955fc1 9.16%,
+    #9c40c9 43.89%,
+    #9c4599 64.72%
+  );
+}
+
+.submitButton:active {
+  background-color: #004085;
+}
+
+.submitButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.companyAddContent input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.acompanyAddContent input {
+  width: 100%;
+}
