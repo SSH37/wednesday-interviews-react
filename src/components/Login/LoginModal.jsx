@@ -5,7 +5,7 @@ import "./LoginModal.css";
 import { useNavigate } from "react-router";
 
 const LoginModal = () => {
-  const { setLoginShow } = useContext(loginCtx);
+  const { setLoginShow, setLoggedIn } = useContext(loginCtx);
   const [emailForm, setEmailForm] = useState("");
   const [passwordForm, setPasswordForm] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -20,7 +20,7 @@ const LoginModal = () => {
       if (!emailRegex.test(emailForm)) {
         error = "Invalid email format.";
       }
-      if (passwordForm == "") {
+      if (passwordForm === "") {
         if (error) {
           error = "Invalid email format and password is empty.";
         } else {
@@ -44,8 +44,9 @@ const LoginModal = () => {
             if (response.ok) {
               const result = await response.json();
               sessionStorage.setItem("accessToken", result.accessToken);
+              setLoggedIn(result.accessToken);
               setLoginShow(false);
-              nav(0);
+              nav("/admin");
             } else {
               const result = await response.json();
               throw new Error(result);
@@ -107,7 +108,6 @@ const LoginModal = () => {
         </div>
         {valError ? <span className="error">{valError}</span> : null}
         <button
-          // disabled={loginDisabled}
           className={`loginButton ${submitted ? "clickedLogin" : ""}`}
           type="submit"
           onClick={(e) => {

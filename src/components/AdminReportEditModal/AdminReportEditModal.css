@@ -1,0 +1,55 @@
+.reportEditModal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+  }
+  
+  .reportEditContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 500px;
+    padding: 30px;
+    background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .reportEditTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .closeButton {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .closeButton:hover {
+    color: red;
+  }
+  
+.reportDateStatus {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+    
+  .reportEditText {
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+    margin: 0;
+  }

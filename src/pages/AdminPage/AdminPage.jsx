@@ -1,10 +1,14 @@
 import "./AdminPage.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SidebarAdmin from "../../components/SidebarAdmin/SidebarAdmin";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import AddCandidatePage from "../AddCandidatePage/AddCandidatePage";
 import { urlCompanies, urlCandidates } from "../../constants/constants";
-import Modal from "react-modal";
+import { loginCtx } from "../../contexts/contexts";
+import AdminCompanyEditModal from "../../components/AdminCompanyEditModal/AdminCompanyEditModal";
+import AdminReportEditModal from "../../components/AdminReportEditModal/AdminReportEditModal";
+import { useNavigate } from "react-router";
 
 const AdminPage = () => {
   const [page, setPage] = useState("companies"); // Default to 'companies'
@@ -12,6 +16,9 @@ const AdminPage = () => {
   const [companies, setCompanies] = useState([]); // State for companies
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const {loggedIn} = useContext(loginCtx);
+  const [companyEditModal, setCompanyEditModal] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (page === "candidates") {
@@ -57,9 +64,13 @@ const AdminPage = () => {
     try {
       const response = await fetch(`${urlCompanies}/${id}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${loggedIn}`,
+        },
       });
       if (!response.ok) {
         throw new Error("Failed to delete company");
+        
       }
       setCompanies((prev) => prev.filter((company) => company.id !== id));
     } catch (err) {
@@ -67,19 +78,50 @@ const AdminPage = () => {
     }
   };
 
-  const handleEditCompany = (id) => {
-    alert(`Edit Company with ID: ${id}`); 
+  const handleDeleteCandidate = async (id) => {
+    try {
+      const response = await fetch(`${urlCandidates}/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${loggedIn}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete company");
+      }
+      setCandidates((prev) => prev.filter((candidate) => candidate.id !== id));
+    } catch (err) {
+      alert(`Error: ${err.message}`);
+    }
   };
+
+  const handleEditCompany = async (id) => {
+    try {
+      const response = await fetch(`${urlCompanies}/${id}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch company");
+      }
+      const data = await response.json();
+      setCompanyEditModal(data);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleEditCandidate = (id) => {
+    alert(`Edit Candidate with ID: ${id}`);
 
   const handleAddCompany = async () => {
     const newCompany = {
       name: "New Company",
-      location: "New York",
+      email: "company@company.rs",
     };
+
     try {
       const response = await fetch(urlCompanies, {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${loggedIn}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newCompany),
@@ -94,13 +136,37 @@ const AdminPage = () => {
     }
   };
 
+  const handleAddCandidate = async () => {
+    const newCandidate = {
+      name: "New Candidate",
+      location: "New York",
+    };
+    try {
+      const response = await fetch(urlCandidates, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${loggedIn}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newCandidate),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to add company");
+      }
+      const addedCandidate = await response.json();
+      setCandidates((prev) => [...prev, addedCandidate]);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
   return (
     <div>
+      {companyEditModal ? <AdminCompanyEditModal data={companyEditModal} setData={setCompanyEditModal}/> :null}
+      {/* <AdminReportEditModal /> */}
       <Header />
-      
-      
       <div className="admin-content">
-      <SidebarAdmin setPage={setPage} />
+        <SidebarAdmin setPage={setPage} />
         {page === "companies" && (
           <div className="companies-page">
             <h2 className="title">Companies</h2>
@@ -122,8 +188,12 @@ const AdminPage = () => {
                       <td>{company.name}</td>
                       <td>{company.email}</td>
                       <td className="td-buttons">
-                        <button onClick={() => handleEditCompany(company.id)}>Edit</button>
-                        <button onClick={() => handleDeleteCompany(company.id)}>Delete</button>
+                        <button onClick={() => handleEditCompany(company.id)}>
+                          Edit
+                        </button>
+                        <button onClick={() => handleDeleteCompany(company.id)}>
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -135,7 +205,7 @@ const AdminPage = () => {
         {page === "candidates" && (
           <div className="candidates-page">
             <h2 className="title">Candidates</h2>
-            <button>Add Candidate</button>
+            <button onClick={()=>{navigate("/add-candidate")}}>Add Candidate</button>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             {!loading && !error && (
@@ -153,8 +223,16 @@ const AdminPage = () => {
                       <td>{candidate.name}</td>
                       <td>{candidate.email}</td>
                       <td className="td-buttons">
-                        <button onClick={() => (candidate.id)}>Edit</button>
-                        <button onClick={() => (candidate.id)}>Delete</button>
+                        <button
+                          onClick={() => handleEditCandidate(candidate.id)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDeleteCandidate(candidate.id)}
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -170,5 +248,3 @@ const AdminPage = () => {
 };
 
 export default AdminPage;
-
-// DODATI FUNKCIONALNOST DUGMICIMA, POPRAVITI FUNKCIJE HANDLEADD DELETE EDIT, TE POPRAVLJENE FUNKCIJE DODATI I ZA KANDIDATE
