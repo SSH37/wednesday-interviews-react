@@ -22,8 +22,8 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/candidate/:id" element={<SinglePage />} />
         <Route path="/*" element={<Navigate to={"/"} />} />
-        <Route path="/admin" element={loggedIn?<AdminPage />:<Navigate to={"/"}/>} />
-        <Route path='/add-candidate' element={loggedIn?<AddCandidatePage />:<Navigate to={"/"}} />
+        <Route path="/admin" element={loggedIn ? <AdminPage /> : <Navigate to={"/"} />} />
+        <Route path='/add-candidate' element={loggedIn ? <AddCandidatePage /> : <Navigate to={"/"} />} />
       </Routes>
     </LoginProvider>
   );
