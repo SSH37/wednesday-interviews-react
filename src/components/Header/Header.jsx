@@ -5,20 +5,29 @@ import { loginCtx } from "../../contexts/contexts";
 
 const Header = () => {
   const nav = useNavigate();
-  const { setLoginShow, loggedIn } = useContext(loginCtx);
+  const { setLoginShow, loggedIn, setLoggedIn } = useContext(loginCtx);
 
   return (
     <div className="header">
-      <div className="leftSide"
-      onClick={()=>{
-        nav("/")
-      }}>
+      <div
+        className="leftSide"
+        onClick={() => {
+          nav("/");
+        }}
+      >
         <h1>WI</h1>
       </div>
       <div className="rightSide">
+        {loggedIn ? <button
+          onClick={() => {
+            nav("/admin");
+          }}
+        >
+          ADMIN
+        </button> : null}
         <button
           onClick={() => {
-            if (window.location.pathname == "/home") {
+            if (window.location.pathname === "/home") {
               nav(0);
             } else {
               nav("/home");
@@ -29,10 +38,11 @@ const Header = () => {
         </button>
         <button
           onClick={() => {
-            if (!loggedIn){
+            if (!loggedIn) {
               setLoginShow(true);
             } else {
               sessionStorage.removeItem("accessToken");
+              setLoggedIn("");
               nav(0);
             }
           }}
