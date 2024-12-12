@@ -11,7 +11,7 @@ body {
 .admin-content {
     display: flex;
     /* margin-left: 250px; */
-    height: 100vh;
+    min-height: calc(100vh - 210px);
 }
 
 

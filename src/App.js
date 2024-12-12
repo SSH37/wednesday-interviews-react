@@ -11,17 +11,17 @@ import LoginModal from "./components/Login/LoginModal";
 
 function App() {
   const [loginShow, setLoginShow] = useState(false);
-  const [loggedIn] = useState(sessionStorage.getItem("accessToken"));
+  const [loggedIn, setLoggedIn] = useState(sessionStorage.getItem("accessToken"));
 
   return (
-    <LoginProvider value={{ setLoginShow, loggedIn }}>
+    <LoginProvider value={{ setLoginShow, loggedIn, setLoggedIn }}>
       {loginShow ? <LoginModal /> : ""}
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/candidate/:id" element={<SinglePage />} />
-        <Route path="/*" element={<Navigate to={"/home"} />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/*" element={<Navigate to={"/"} />} />
+        <Route path="/admin" element={loggedIn?<AdminPage />:<Navigate to={"/"}/>} />
       </Routes>
     </LoginProvider>
   );

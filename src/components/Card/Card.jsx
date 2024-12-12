@@ -53,14 +53,14 @@ const Card = ({ data }) => {
         );
       }
     },
-    [emailShowTimestamp]
+    [emailShowTimestamp,emailShowId]
   );
 
   const handleCardLeave = useCallback(() => {
     clearTimeout(emailShowId);
     setEmailShowTimestamp(null);
     setEmailShow(false);
-  }, [emailShowTimestamp]);
+  }, [emailShowId]);
 
   useEffect(() => {
     if (!emailShow) {

@@ -29,7 +29,7 @@ const Sidebar = ({ setCandidateIds }) => {
       niz.push(element.candidateId);
     });
     setCandidateIds(niz);
-  }, []);
+  }, [setCandidateIds]);
 
   return (
     <>
