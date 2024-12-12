@@ -172,8 +172,6 @@ const AdminPage = () => {
           <div className="companies-page">
             <h2 className="title">Companies</h2>
             <button onClick={handleAddCompany}>Add Company</button>
-            <h2>Companies</h2>
-            <button onClick={() => {handleAddCompany()}}>Add Company</button>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             {!loading && !error && (
