@@ -43,7 +43,6 @@
 }
 
 .companyAddContent h2 {
-  text-align: center;
   font-size: 2rem;
   font-weight: 600;
   color: #333;
@@ -59,16 +58,18 @@
   font-size: 1rem;
   font-weight: 500;
   color: #555;
-  margin-bottom: 5px;
 }
 
 .companyAddContent input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 12px;
+  width: 100%;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   transition: all 0.3s ease;
-  margin-left: 5px;
 }
 
 .companyAddContent input:focus {
@@ -79,6 +80,7 @@
 
 .submitButton {
   padding: 12px;
+  margin-top: 30px;
   background-image: linear-gradient(
     92.88deg,
     #455eb5 9.16%,
@@ -109,14 +111,4 @@
 .submitButton:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
-}
-
-.companyAddContent input {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.acompanyAddContent input {
-  width: 100%;
 }

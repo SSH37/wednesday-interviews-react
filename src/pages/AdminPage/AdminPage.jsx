@@ -12,9 +12,9 @@ import { useNavigate } from "react-router";
 import AdminAddCompanyModal from "../../components/AdminAddCompanyModal/AdminAddCompanyModal";
 
 const AdminPage = () => {
-  const [page, setPage] = useState("companies"); // Default to 'companies'
-  const [candidates, setCandidates] = useState([]); // State for candidates
-  const [companies, setCompanies] = useState([]); // State for companies
+  const [page, setPage] = useState("companies");
+  const [candidates, setCandidates] = useState([]);
+  const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const {loggedIn} = useContext(loginCtx);
@@ -139,34 +139,10 @@ const AdminPage = () => {
     }
   };
 
-  const handleAddCandidate = async () => {
-    const newCandidate = {
-      name: "New Candidate",
-      location: "New York",
-    };
-    try {
-      const response = await fetch(urlCandidates, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${loggedIn}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newCandidate),
-      });
-      if (!response.ok) {
-        throw new Error("Failed to add company");
-      }
-      const addedCandidate = await response.json();
-      setCandidates((prev) => [...prev, addedCandidate]);
-    } catch (err) {
-      alert(err.message);
-    }
-  };
-
   return (
     <div>
       {companyEditModal ? <AdminCompanyEditModal data={companyEditModal} setData={setCompanyEditModal}/> :null}
-      {companyAddModal ? <AdminAddCompanyModal setOpen={setCompanyAddModal}/> : null}
+      {companyAddModal ? <AdminAddCompanyModal setOpen={setCompanyAddModal} setCompanies={setCompanies}/> : null}
       {/* <AdminReportEditModal /> */}
       <Header />
       <div className="admin-content">

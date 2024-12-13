@@ -4,15 +4,12 @@ import { loginCtx } from "../../contexts/contexts";
 import { urlCompanies } from "../../constants/constants";
 import "./AdminAddCompanyModal.css";
 
-const AdminAddCompanyModal = ({ setOpen }) => {
+const AdminAddCompanyModal = ({ setOpen, setCompanies }) => {
   const [formData, setFormData] = useState({
     name: "",
-    birthday: "",
     email: "",
-    education: "",
-    avatar: "",
   });
-  const navigate = useNavigate();
+  const nav = useNavigate();
   const { loggedIn } = useContext(loginCtx);
 
   const handleChange = (e) => {
@@ -38,8 +35,9 @@ const AdminAddCompanyModal = ({ setOpen }) => {
       if (!response.ok) {
         throw new Error("Failed to add candidate");
       }
-      alert("Candidate added successfully!");
-      navigate("/admin"); // Navigate back to admin page
+      setOpen(false);
+      setCompanies((prev) => [...prev, formData]);
+      nav(0);
     } catch (err) {
       alert(`Error: ${err.message}`);
     }
@@ -80,7 +78,9 @@ const AdminAddCompanyModal = ({ setOpen }) => {
               required
             />
           </label>
-          <button className="submitButton" type="submit">Add Company</button>
+          <button className="submitButton" type="submit">
+            Add Company
+          </button>
         </form>
         <p className="companyAddText"></p>
       </div>

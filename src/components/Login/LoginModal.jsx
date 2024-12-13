@@ -83,11 +83,12 @@ const LoginModal = () => {
       >
         <div>
           <div className="loginInputField">
-            <label htmlFor="userName">Username:</label>
+            <label htmlFor="email">Email:</label>
             <input
-              type="text"
-              name="userName"
-              id="userNameLogin"
+              type="email"
+              name="email"
+              id="emailLogin"
+              required
               onChange={(e) => {
                 setEmailForm(e.target.value);
               }}
@@ -100,6 +101,7 @@ const LoginModal = () => {
               type="password"
               name="password"
               id="passwordLogin"
+              required
               onChange={(e) => {
                 setPasswordForm(e.target.value);
               }}
