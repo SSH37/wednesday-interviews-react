@@ -12,7 +12,6 @@
   transition: opacity 0.3s ease;
 }
 
-/* Modal content */
 .modal-content {
   background-color: #fff;
   padding: 20px;
@@ -23,7 +22,6 @@
   animation: slideIn 0.5s ease-out;
 }
 
-/* Slide-in animation */
 @keyframes slideIn {
   from {
     transform: translateY(-20px);
@@ -35,7 +33,6 @@
   }
 }
 
-/* Title and form labels */
 h3 {
   font-size: 24px;
   margin-bottom: 20px;
@@ -43,7 +40,6 @@ h3 {
   font-weight: 600;
 }
 
-/* Input fields and textareas */
 input[type="text"],
 input[type="date"],
 textarea {
@@ -65,8 +61,7 @@ textarea:focus {
   outline: none;
 }
 
-/* Button styles */
-button {
+.modal-content>button {
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -89,7 +84,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Close button */
+
 button:nth-of-type(2) {
   background-color: #f44336;
   margin-left: 10px;
@@ -99,7 +94,6 @@ button:nth-of-type(2):hover {
   background-color: #e53935;
 }
 
-/* Input text styles */
 label {
   font-size: 14px;
   margin-bottom: 5px;
@@ -108,18 +102,15 @@ label {
   display: block;
 }
 
-/* Textarea styling */
 textarea {
   resize: vertical;
   min-height: 100px;
 }
 
-/* Modal backdrop fade-in effect */
 .modal.fade-in {
   opacity: 1;
 }
 
-/* Body background dimming */
 body {
   transition: background-color 0.3s ease;
 }
