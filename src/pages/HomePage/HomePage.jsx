@@ -12,7 +12,9 @@ const HomePage = () => {
   const [filterParam, setFilterParam] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [candidateIds, setCandidateIds] = useState([]);
+  const [companyNotFound, setCompanyNotFound] = useState(false);
 
+  console.log(companyNotFound);
   useEffect(() => {
     if (inputValue) {
       const timeoutId = setTimeout(() => {
@@ -34,6 +36,9 @@ const HomePage = () => {
         param = `${param}&id=${el}`;
       }
       setFilterParam(param);
+      setCompanyNotFound(false);
+    } else {
+      setCompanyNotFound(true);
     }
   }, [candidateIds]);
 
@@ -79,11 +84,11 @@ const HomePage = () => {
               </label>
             </div>
           </div>
-          <div id="candidatesList">
+          {companyNotFound ? null : < div id="candidatesList">
             {candidates.map((cardData) => {
               return <Card key={cardData.id} data={cardData} />;
             })}
-          </div>
+          </div>}
         </div>
       </div>
       <Footer />

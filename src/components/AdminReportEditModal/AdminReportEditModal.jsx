@@ -10,15 +10,16 @@ const AdminReportEditModal = ({ report, onSave, onClose }) => {
     onSave(editedReport);
   };
 
-  const [companies, setCompanies] = useState([]);
+  const [company, setCompany] = useState([]);
 
   useEffect(() => {
+    console.log(report);
     const fetchCompanies = async () => {
       try {
-        const response = await fetch("http://localhost:3333/api/companies");
+        const response = await fetch(`http://localhost:3333/api/companies/${report.companyId}`);
         if (!response.ok) throw new Error("Failed to fetch companies data");
         const data = await response.json();
-        setCompanies(data);
+        setCompany(data);
       } catch (err) {
         alert(err.message);
       }
@@ -27,27 +28,18 @@ const AdminReportEditModal = ({ report, onSave, onClose }) => {
     fetchCompanies();
   }, []);
 
-  const ReportModal = ({ report, onSave, onClose }) => {
-    const [editedReport, setEditedReport] = useState(report);
-
-    const handleSave = () => {
-      onSave(editedReport);
-    };
-  };
-
   return (
     <div className="modal">
       <div className="modal-content">
         <h3>Edit Report</h3>
-        <label>Candidate Name:</label>
-        <input type="text" value={editedReport.candidateName} disabled />
+        <label>Company Name: {company.name}</label>
 
         <label>Interview Date:</label>
         <input
           type="date"
           value={new Date(editedReport.interviewDate)
             .toISOString()
-            .substr(0, 10)}
+            .slice(0, 10)}
           onChange={(e) =>
             setEditedReport({
               ...editedReport,

@@ -1,0 +1,127 @@
+.addReportModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+/* Modal content */
+.addReportModalContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Title and form labels */
+.addReportModalContent h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Input fields and textareas */
+.addReportModalContent input[type="text"],
+.addReportModalContent input[type="date"],
+.addReportModalContent textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.addReportModalContent input[type="text"]:focus,
+.addReportModalContent input[type="date"]:focus,
+.addReportModalContent textarea:focus {
+  border-color: #4caf50;
+  background-color: #fff;
+  outline: none;
+}
+
+/* Button styles */
+.addReportModalContent button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.addReportModalContent button:hover {
+  background-color: #45a049;
+}
+
+.addReportModalContent button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Close button */
+.addReportModalContent button:nth-of-type(2) {
+  background-color: #f44336;
+  margin-left: 10px;
+}
+
+.addReportModalContent button:nth-of-type(2):hover {
+  background-color: #e53935;
+}
+
+/* Input text styles */
+.addReportModalContent label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+  display: block;
+}
+
+/* Textarea styling */
+.addReportModalContent textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Modal backdrop fade-in effect */
+.addReportModal.fade-in {
+  opacity: 1;
+}
+
+/* Body background dimming */
+.addReportModalContent body {
+  transition: background-color 0.3s ease;
+}
+
+#addReportCompanySelect {
+  padding: 5px;
+  font-size: 1.2rem;
+}

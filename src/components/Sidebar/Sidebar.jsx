@@ -28,6 +28,7 @@ const Sidebar = ({ setCandidateIds }) => {
     el.reports.forEach((element) => {
       niz.push(element.candidateId);
     });
+    console.log(niz);
     setCandidateIds(niz);
   }, [setCandidateIds]);
 

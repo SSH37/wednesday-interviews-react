@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { loginCtx } from "../../contexts/contexts";
 import AdminReportEditModal from "../../components/AdminReportEditModal/AdminReportEditModal";
 import { urlCandidates, urlReports } from "../../constants/constants";
 import "./EditCandidatePage.css";
+import AdminAddReportModal from "../../components/AdminAddReportModal/AdminAddReportModal";
 
 const EditCandidatePage = () => {
   const { id } = useParams();
@@ -14,8 +15,10 @@ const EditCandidatePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [showAddReportModal, setShowAddReportModal] = useState(false);
   const [selectedReport, setSelectedReport] = useState(null);
   const { loggedIn } = useContext(loginCtx);
+  const nav = useNavigate()
 
   useEffect(() => {
     fetchCandidateData();
@@ -49,6 +52,27 @@ const EditCandidatePage = () => {
       alert("Report saved successfully!");
       setReports((prev) => prev.map((r) => (r.id === report.id ? report : r)));
       setShowModal(false);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const newReport = async (report) => {
+    const newReport = { ...report, candidateId: candidate.id };
+    console.log(newReport)
+    try {
+      const response = await fetch(`${urlReports}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${loggedIn}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newReport),
+      });
+      if (!response.ok) throw new Error("Failed to add report");
+      alert("Report added successfully!");
+      setShowAddReportModal(false);
+      nav(0);
     } catch (err) {
       alert(err.message);
     }
@@ -124,6 +148,12 @@ const EditCandidatePage = () => {
           onClose={() => setShowModal(false)}
         />
       )}
+      {showAddReportModal && (
+        <AdminAddReportModal
+          onSave={newReport}
+          onClose={() => setShowAddReportModal(false)}
+        />
+      )}
       <Header />
       <div className="All">
         {candidate && (
@@ -177,9 +207,10 @@ const EditCandidatePage = () => {
           <h2>Reports</h2>
           <button
             onClick={() => {
-              console.log(1);
+              setShowAddReportModal(true);
             }}
-          className="newReportButton">
+            className="newReportButton"
+          >
             Add new report
           </button>
           {reports.map((report) => (
