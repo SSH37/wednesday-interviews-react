@@ -5,7 +5,7 @@ import { loginCtx } from "../../contexts/contexts";
 import { urlCompanies } from "../../constants/constants";
 import "./AdminAddCompanyModal.css";
 
-const AdminAddCompanyModal = ({ setOpen, setCompanies }) => {
+const AdminAddCompanyModal = ({ setOpen, setCompanies, setRefresh }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,11 +34,11 @@ const AdminAddCompanyModal = ({ setOpen, setCompanies }) => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to add candidate");
+        throw new Error("Failed to add company");
       }
       setOpen(false);
       setCompanies((prev) => [...prev, formData]);
-      nav(0);
+      setRefresh((prev) => !prev);
     } catch (err) {
       alert(`Error: ${err.message}`);
     }
@@ -83,7 +83,7 @@ const AdminAddCompanyModal = ({ setOpen, setCompanies }) => {
             Add Company
           </button>
         </form>
-        <p className="companyAddText"></p>
+        {/* <p className="companyAddText"></p> */}
       </div>
     </div>
   );

@@ -1,49 +1,114 @@
 .companyEditModal {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 2;
-  }
-  
-  .companyEditContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    width: 500px;
-    padding: 30px;
-    background: linear-gradient(135deg, #fbc2eb, #a18cd1);
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .companyEditTop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .closeButton {
-    background-color: transparent;
-    border: none;
-    font-size: 2rem;
-    color: #333;
-    cursor: pointer;
-  }
-  
-  .closeButton:hover {
-    color: red;
-  }
-    
-  .companyEditText {
-    font-size: 1rem;
-    color: #333;
-    text-align: center;
-    margin: 0;
-  }
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+.companyEditContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+  padding: 30px;
+  background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+  background: aliceblue;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.companyEditTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.closeButton {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: #9c40c9;
+}
+
+.companyEditContent h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.companyEditContent form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.companyEditContent label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.companyEditContent input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  width: 100%;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.companyEditContent input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.submitButton {
+  padding: 12px;
+  margin-top: 30px;
+  background-image: linear-gradient(
+    92.88deg,
+    #455eb5 9.16%,
+    #5643cc 43.89%,
+    #673fd7 64.72%
+  );
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-image: linear-gradient(
+    92.88deg,
+    #955fc1 9.16%,
+    #9c40c9 43.89%,
+    #9c4599 64.72%
+  );
+}
+
+.submitButton:active {
+  background-color: #004085;
+}
+
+.submitButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
