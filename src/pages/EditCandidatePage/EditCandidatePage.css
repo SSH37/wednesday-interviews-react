@@ -1,16 +1,14 @@
-/* General container styling */
 .edit-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
+  background-color: aliceblue;
   font-family: "Arial", sans-serif;
   padding: 2rem;
+  min-height: calc(100vh - 210px);
 }
 
-/* Card styling */
 .edit-card {
   background-color: #ffffff;
   border-radius: 12px;
@@ -60,10 +58,9 @@
   background-color: #3b41c5;
 }
 
-/* Reports Section */
 .reports-section {
   width: 100%;
-  margin: 2rem auto;
+  margin: 1rem auto;
   padding: 20px;
   padding-right: 100px;
   padding-left: 200px;
@@ -121,4 +118,5 @@
 
 .All {
   display: flex;
+  min-height: calc(100vh - 210px);
 }
