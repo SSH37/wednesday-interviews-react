@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { loginCtx } from "../../contexts/contexts";
-
+import AdminReportEditModal from "../../components/AdminReportEditModal/AdminReportEditModal";
 import { urlCandidates, urlReports } from "../../constants/constants";
 import "./EditCandidatePage.css";
 
@@ -13,6 +13,8 @@ const EditCandidatePage = () => {
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedReport, setSelectedReport] = useState(null);
   const { loggedIn } = useContext(loginCtx);
 
   useEffect(() => {
@@ -30,6 +32,25 @@ const EditCandidatePage = () => {
       setError(err.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const saveReport = async (report) => {
+    try {
+      const response = await fetch(`${urlReports}/${report.id}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${loggedIn}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(report),
+      });
+      if (!response.ok) throw new Error("Failed to save report");
+      alert("Report saved successfully!");
+      setReports((prev) => prev.map((r) => (r.id === report.id ? report : r)));
+      setShowModal(false);
+    } catch (err) {
+      alert(err.message);
     }
   };
 
@@ -61,8 +82,16 @@ const EditCandidatePage = () => {
     }
   };
 
-  const handleEditReport = (reportId) => {
-    alert(`Edit Report with ID: ${reportId}`);
+  const handleEditReport = async (reportId) => {
+    try {
+      const response = await fetch(`${urlReports}/${reportId}`);
+      if (!response.ok) throw new Error("Failed to fetch report data");
+      const data = await response.json();
+      setSelectedReport(data);
+      setShowModal(true);
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   const handleDeleteReport = async (reportId) => {
@@ -82,13 +111,23 @@ const EditCandidatePage = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-
+  function formatDate(value) {
+    let date = new Date(value);
+    return date.toLocaleDateString();
+  }
   return (
     <div>
+      {showModal && selectedReport && (
+        <AdminReportEditModal
+          report={selectedReport}
+          onSave={saveReport}
+          onClose={() => setShowModal(false)}
+        />
+      )}
       <Header />
       <div className="All">
         {candidate && (
-          <div className="=edit-container">
+          <div className="edit-container">
             <h2>Edit Candidate</h2>
             <div className="edit-card">
               <label>Name:</label>
@@ -99,8 +138,7 @@ const EditCandidatePage = () => {
                   setCandidate({ ...candidate, name: e.target.value })
                 }
               />
-            </div>
-            <div className="edit-card">
+
               <label>Birthday:</label>
               <input
                 type="text"
@@ -109,8 +147,7 @@ const EditCandidatePage = () => {
                   setCandidate({ ...candidate, birthday: e.target.value })
                 }
               />
-            </div>
-            <div className="edit-card">
+
               <label>Email:</label>
               <input
                 type="text"
@@ -119,8 +156,7 @@ const EditCandidatePage = () => {
                   setCandidate({ ...candidate, email: e.target.value })
                 }
               />
-            </div>
-            <div className="edit-card">
+
               <label>Education:</label>
               <input
                 type="text"
@@ -129,18 +165,29 @@ const EditCandidatePage = () => {
                   setCandidate({ ...candidate, education: e.target.value })
                 }
               />
+
+              <button onClick={handleSaveCandidate} className="buttonSave">
+                Save
+              </button>
             </div>
-            <button onClick={handleSaveCandidate} className="buttonSave">
-              Save
-            </button>
           </div>
         )}
 
         <div className="reports-section">
           <h2>Reports</h2>
+          <button
+            onClick={() => {
+              console.log(1);
+            }}
+          className="newReportButton">
+            Add new report
+          </button>
           {reports.map((report) => (
             <div key={report.id}>
               <p>{report.note}</p>
+              <p>{report.phase}</p>
+              <p>{report.status}</p>
+              <p>{formatDate(report.interviewDate)}</p>
               <button onClick={() => handleEditReport(report.id)}>Edit</button>
               <button
                 onClick={() => handleDeleteReport(report.id)}
