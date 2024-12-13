@@ -8,6 +8,7 @@ import { useState } from "react";
 import { LoginProvider } from "./contexts/contexts";
 import LoginModal from "./components/Login/LoginModal";
 import AddCandidatePage from "./pages/AddCandidatePage/AddCandidatePage";
+import EditCandidatePage from "./pages/EditCandidatePage/EditCandidatePage";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/*" element={<Navigate to={"/"} />} />
         <Route path="/admin" element={loggedIn ? <AdminPage /> : <Navigate to={"/"} />} />
         <Route path='/add-candidate' element={loggedIn ? <AddCandidatePage /> : <Navigate to={"/"} />} />
+        <Route path="/edit-candidate/:id" element={<EditCandidatePage />} />
       </Routes>
     </LoginProvider>
   );

@@ -111,7 +111,7 @@ const AdminPage = () => {
   };
 
   const handleEditCandidate = (id) => {
-    alert(`Edit Candidate with ID: ${id}`);
+    navigate(`/edit-candidate/${id}`);
   };
 
   const handleAddCompany = async () => {
