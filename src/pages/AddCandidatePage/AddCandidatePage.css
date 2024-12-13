@@ -9,7 +9,7 @@
 .page{
     min-height: calc(100vh - 210px);
     display: flex;
-
+    padding: 20px;
 }
 
 .add-candidate-page h2 {
@@ -34,8 +34,6 @@
 }
 
 .add-candidate-page input {
-    display: flex;
-    flex-direction: column;
     gap: 10px;
     padding: 12px;
     width: 100%;
@@ -74,4 +72,18 @@
 .add-candidate-page button:disabled {
     background-color: #cccccc; 
     cursor: not-allowed;
+}
+
+.add-candidate-page > div {
+    display: flex;
+    flex-direction: row;
+}
+
+#genderPicker {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#genderPicker > div {
+    display:flex;
 }

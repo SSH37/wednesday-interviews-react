@@ -4,8 +4,8 @@ import "./Card.css";
 const emailShowDelay = 250;
 
 const Card = ({ data }) => {
-  const [imageUrl, setImageUrl] = useState("");
-  // const [imageUrl, setImageUrl] = useState(data.avatar);
+  // const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(data.avatar);
   //db gets 403 for avatar urls so fetch random pictures for now
   const nav = useNavigate();
   const [emailShow, setEmailShow] = useState(false);
@@ -13,24 +13,24 @@ const Card = ({ data }) => {
   const [emailShowId, setEmailShowId] = useState(null);
   const [emailPos, setEmailPos] = useState([0, 0]);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await fetch(
-          "https://randomuser.me/api/?inc=picture&noinfo"
-        );
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://randomuser.me/api/?inc=picture&noinfo"
+  //       );
 
-        if (response.ok) {
-          const result = await response.json();
-          setImageUrl(result.results[0].picture.large);
-        } else {
-          throw new Error(response.statusText);
-        }
-      } catch (e) {
-        console.log(e.message);
-      }
-    })();
-  }, []);
+  //       if (response.ok) {
+  //         const result = await response.json();
+  //         setImageUrl(result.results[0].picture.large);
+  //       } else {
+  //         throw new Error(response.statusText);
+  //       }
+  //     } catch (e) {
+  //       console.log(e.message);
+  //     }
+  //   })();
+  // }, []);
 
   const handleCardHover = useCallback(
     (e) => {

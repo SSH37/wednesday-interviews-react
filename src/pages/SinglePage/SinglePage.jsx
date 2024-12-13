@@ -8,7 +8,7 @@ import Report from "../../components/Report/Report";
 
 const SinglePage = () => {
   const [candData, setCandData] = useState("");
-  const [imageUrl, setImageUrl] = useState();
+  // const [imageUrl, setImageUrl] = useState();
   const [date, setDate] = useState();
   const [reportModalData, setReportModalData] = useState();
   const { id } = useParams();
@@ -27,19 +27,19 @@ const SinglePage = () => {
       } catch (e) {
         console.log(e.message);
       }
-      try {
-        const response = await fetch(
-          "https://randomuser.me/api/?inc=picture&noinfo"
-        );
-        if (response.ok) {
-          const result = await response.json();
-          setImageUrl(result.results[0].picture.large);
-        } else {
-          throw new Error(response.statusText);
-        }
-      } catch (e) {
-        console.log(e.message);
-      }
+      // try {
+      //   const response = await fetch(
+      //     "https://randomuser.me/api/?inc=picture&noinfo"
+      //   );
+      //   if (response.ok) {
+      //     const result = await response.json();
+      //     setImageUrl(result.results[0].picture.large);
+      //   } else {
+      //     throw new Error(response.statusText);
+      //   }
+      // } catch (e) {
+      //   console.log(e.message);
+      // }
     })();
   }, [id]);
 
@@ -59,8 +59,9 @@ const SinglePage = () => {
       <Header />
       <div id="singlePage">
         <div id="candidateSummary">
-          {/* <img src={`${candData.avatar}`} alt={`${candData.name}`} /> */}
-          <img src={imageUrl ? imageUrl : ""} alt={candData.name} />
+          {console.log(candData.avatar)}
+          <img src={`${candData.avatar}`} alt={`${candData.name}`} />
+          {/* <img src={imageUrl ? imageUrl : ""} alt={candData.name} /> */}
           <div className="candidateInfo">
             <p>{candData.name}</p>
             <p>Email: {candData.email}</p>
